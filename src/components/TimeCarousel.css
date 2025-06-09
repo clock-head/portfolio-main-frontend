@@ -1,0 +1,74 @@
+.time-carousel {
+  position: relative;
+  width: 100%;
+  /* max-width: 150px; */
+  height: 370px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  background-color: rgba(7, 7, 7, 0.5);
+  color: #1f8a9a;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  scroll-behavior: smooth;
+}
+
+.time-carousel::-webkit-scrollbar {
+  width: 3px;
+  height: 6px;
+}
+
+.time-carousel::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.time-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Flex direction defaults to vertical */
+.time-carousel-track {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Item styling */
+.time-carousel-item {
+  padding: 1rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+  color: #3c7179;
+}
+
+.time-carousel-item:hover {
+  color: #2edffa;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(33, 189, 216, 0.2);
+}
+
+/* ————— MOBILE/TABLET ————— */
+@media screen and (max-width: 768px) {
+  .time-carousel {
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .time-carousel-track {
+    flex-direction: row;
+  }
+
+  .time-carousel-item {
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 1.5rem;
+  }
+}

@@ -1,0 +1,161 @@
+.unit {
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+.unit.calendar-day {
+  /* border: 2px solid var(--secondary-light); */
+  padding: 2rem 1rem;
+}
+
+.unit.bordered {
+  border: 2px solid var(--secondary-light);
+  border-radius: 0.5rem;
+}
+
+/* Positioning Rules */
+.unit.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.unit.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.unit.flex-vertical {
+  flex-direction: column;
+}
+
+.unit.button-group-flex {
+  flex-direction: row;
+}
+
+.unit.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: auto;
+  gap: 0.5rem;
+}
+
+.unit.gap-0 {
+  gap: 0;
+}
+
+.unit.gap-sm {
+  gap: 0.5rem;
+}
+
+.unit.gap-lg {
+  gap: 2rem;
+}
+
+.unit.gap-xl {
+  gap: 3rem;
+}
+
+.unit.justify-content-left {
+  justify-content: flex-start;
+}
+
+.unit.justify-content-center {
+  justify-content: center;
+}
+
+.unit.justify-content-right {
+  justify-content: flex-end;
+}
+
+.unit.align-top {
+  align-items: flex-start;
+}
+
+.unit.align-center {
+  align-items: center;
+}
+
+.unit.align-bottom {
+  align-items: flex-end;
+}
+
+/* Align items vertically */
+.unit.align-items-start {
+  align-items: start;
+}
+.unit.align-items-center {
+  align-items: center;
+}
+.unit.align-items-end {
+  align-items: end;
+}
+.unit.align-items-stretch {
+  align-items: stretch;
+}
+
+/* Justify items horizontally (mostly relevant for grid) */
+.unit.justify-items-start {
+  justify-items: start;
+}
+.unit.justify-items-center {
+  justify-items: center;
+}
+.unit.justify-items-end {
+  justify-items: end;
+}
+.unit.justify-items-stretch {
+  justify-items: stretch;
+}
+
+/* Justify self (mostly relevant for grid) */
+
+.unit.align-self-top {
+  align-self: start;
+}
+.unit.align-self-center {
+  align-self: center;
+}
+.unit.align-self-bottom {
+  align-self: end;
+}
+
+.unit.justify-self-left {
+  justify-self: start;
+}
+.unit.justify-self-center {
+  justify-self: center;
+}
+.unit.justify-self-right {
+  justify-self: end;
+}
+
+/* Col Span */
+
+[class*='col-span-'] {
+  grid-column-end: span var(--col-span, 1);
+}
+
+.unit.col-span-1 {
+  grid-column: span 1;
+}
+.unit.col-span-2 {
+  grid-column: span 2;
+}
+.unit.col-span-3 {
+  grid-column: span 3;
+}
+.unit.col-span-4 {
+  grid-column: span 4;
+}
+
+.unit.row-span-1 {
+  grid-row: span 1;
+}
+.unit.row-span-2 {
+  grid-row: span 2;
+}
+.unit.row-span-3 {
+  grid-row: span 3;
+}

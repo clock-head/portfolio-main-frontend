@@ -1,0 +1,24 @@
+.date-container {
+  display: grid;
+  border: 0.1px solid var(--secondary-base);
+  padding: auto;
+  border-radius: 1px;
+}
+
+.date-button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 0.15rem;
+}
+
+.date-button:hover {
+  background-color: var(--secondary-light);
+}
+
+.date-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--secondary-base);
+  margin: 0;
+  text-align: right;
+}

@@ -1,0 +1,38 @@
+/* CSS Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-black: #000000;
+  --secondary-base: #23a3ac; /* Adjust to preferred accent */
+  --secondary-hover: rgba(48, 177, 209, 0.5);
+  --secondary-light: rgba(231, 240, 97, 0.7);
+  --tertiary-light: #e8439e;
+  --text-light: #ffffff;
+}
+
+/* .app-root {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+} */
+
+.bg-light {
+  background-color: #f9f9f9;
+}
+
+.bg-dark {
+  background-color: var(--primary-black);
+}
+
+.bg-image {
+  background-image: url('/path/to/image.jpg'); /* Adjust to preferred image */
+  background-size: cover;
+  background-position: center;
+}

@@ -1,0 +1,98 @@
+.layout-root {
+  /* width: 100%; */
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Layout Context Container */
+
+.layout-root.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.layout-root.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Layout Variants */
+
+.layout-root.grid-3-2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+}
+
+/* Spacing */
+.layout-root.gap-sm {
+  gap: 1rem;
+}
+
+.layout-root.gap-md {
+  gap: 2rem;
+}
+
+.layout-root.gap-lg {
+  gap: 4rem;
+}
+
+/* Positioning Rules */
+.layout-root.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-root.justify-content-left {
+  justify-content: start;
+}
+
+.layout-root.justify-content-center {
+  justify-content: center;
+}
+
+.layout-root.justify-content-right {
+  justify-content: end;
+}
+
+.layout-root.justify-items-left {
+  justify-items: start;
+}
+
+.layout-root.justify-items-center {
+  justify-items: center;
+}
+
+.layout-root.justify-items-right {
+  justify-items: end;
+}
+
+.layout-root.align-content-top {
+  align-content: start;
+}
+
+.layout-root.align-content-center {
+  align-content: center;
+}
+
+.layout-root.align-content-bottom {
+  align-content: end;
+}
+
+.layout-root.align-items-top {
+  align-items: start;
+}
+
+.layout-root.align-items-center {
+  align-items: center;
+}
+
+.layout-root.align-items-bottom {
+  align-items: end;
+}
+
+.layout-root.align-items.stretch {
+  align-items: stretch;
+}

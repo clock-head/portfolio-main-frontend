@@ -1,0 +1,217 @@
+.section {
+  width: 90%;
+  /* max-width: 1200px; */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section.skinny {
+  width: 50%;
+}
+
+.section.wide {
+  width: 100%;
+}
+
+.section.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.section.appointment-grid {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  grid-template-areas: 'details calendar time-carousel';
+  gap: 1rem;
+}
+
+section.grid-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  gap: 0.2rem;
+}
+
+.section.bordered {
+  border: 1.5px solid var(--secondary-light);
+  padding: 2rem;
+}
+
+/* Layout Context Container */
+
+/* Layout Variants */
+
+.section.grid-3-2 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-rows: repeat(2, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Spacing */
+.section.gap-xsm {
+  gap: 0.5rem;
+}
+
+.section.gap-sm {
+  gap: 1rem;
+}
+
+.section.gap-md {
+  gap: 2rem;
+}
+
+.section.gap-lg {
+  gap: 4rem;
+}
+
+/* Padding Variants */
+.section.py-6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Background Variants */
+.section.bg-light {
+  background-color: #f9f9f9;
+}
+
+.section.bg-dark {
+  background-color: #000000;
+}
+
+/* Positioning Rules */
+.section.centered {
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+
+/* .section.align-top {
+  align-items: flex-start;
+}
+
+.section.align-bottom {
+  align-items: flex-end;
+} */
+
+/* Align items vertically */
+.section.align-items-top {
+  align-items: start;
+}
+.section.align-items-center {
+  align-items: center;
+}
+.section.align-items-bottom {
+  align-items: end;
+}
+.section.align-items-stretch {
+  align-items: stretch;
+}
+
+/* Align content vertically */
+
+.section.align-content-top {
+  align-content: start;
+}
+.section.align-content-center {
+  align-content: center;
+}
+.section.align-content-bottom {
+  align-content: end;
+}
+.section.align-content-stretch {
+  align-content: stretch;
+}
+
+/* Justify items horizontally (mostly relevant for grid) */
+.section.justify-items-left {
+  justify-items: start;
+}
+.section.justify-items-center {
+  justify-items: center;
+}
+.section.justify-items-right {
+  justify-items: end;
+}
+.section.justify-items-stretch {
+  justify-items: stretch;
+}
+
+/* Justify content horizontally (mostly relevant for flex) */
+
+.section.justify-content-left {
+  justify-content: start;
+}
+
+.section.justify-content-center {
+  justify-content: center;
+}
+
+.section.justify-content-right {
+  justify-content: end;
+}
+
+.section.justify-content-stretch {
+  justify-content: stretch;
+}
+
+/* Col Span */
+
+[class*='col-span-'] {
+  grid-column-end: span var(--col-span, 1);
+}
+
+.section.col-span-1 {
+  grid-column: span 1;
+}
+.section.col-span-2 {
+  grid-column: span 2;
+}
+.section.col-span-3 {
+  grid-column: span 3;
+}
+.section.col-span-4 {
+  grid-column: span 4;
+}
+
+.section.row-span-1 {
+  grid-row: span 1;
+}
+.section.row-span-2 {
+  grid-row: span 2;
+}
+.section.row-span-3 {
+  grid-row: span 3;
+}
+
+.section.align-self-start {
+  align-self: start;
+}
+.section.align-self-center {
+  align-self: center;
+}
+.section.align-self-end {
+  align-self: end;
+}
+
+.section.justify-self-start {
+  justify-self: start;
+}
+.section.justify-self-center {
+  justify-self: center;
+}
+.section.justify-self-end {
+  justify-self: end;
+}
+
+/* Contextual Class Example */
+/* .page-structure {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+} */

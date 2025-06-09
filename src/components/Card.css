@@ -1,0 +1,60 @@
+/* Base Card Container */
+.card-container {
+  background-color: var(--primary-black);
+  color: var(--secondary-base);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  /* width: auto; */
+  max-width: 800px;
+  margin: 0 2rem;
+}
+
+.card-container.calendar {
+  max-width: 1800px;
+  padding: 2rem;
+}
+
+.card-container.calendar-grid-item {
+  grid-area: calendar;
+}
+
+.card-container.bordered {
+  border: 1.5px solid var(--secondary-light);
+  padding: 2rem;
+}
+
+.card-container.py-6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Card Header */
+.card-header {
+  margin-bottom: 1.5rem;
+  color: var(--secondary-base);
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--secondary-base);
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  color: var(--secondary-base);
+  margin-top: 0.25rem;
+}
+
+/* Card Body */
+.card-body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Card Footer */
+.card-footer {
+  margin-top: 2rem;
+}
