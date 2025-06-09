@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Section from '../components/Section';
 import { Card } from '../components/Card';
 import { Link } from 'react-router-dom';
@@ -29,10 +29,12 @@ export const CalendarPage = () => {
   const selectDay = (day) => {
     setDay((prevDay) => day);
     console.log('Selected day:', day);
+    // call getAvailableTimeslots API
   };
 
   const selectTime = (hour) => {
     setTime((prevTime) => hour);
+    // display form to fill in details
   };
 
   return (
@@ -69,7 +71,6 @@ export const CalendarPage = () => {
             </Unit>
           }
         >
-          <p>Select a day to view available timeslots.</p>
           <Unit layout="flex" justifyContent="center" alignItems="center">
             <Calendar selectDay={selectDay} />
           </Unit>
