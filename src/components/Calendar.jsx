@@ -20,9 +20,9 @@ const Calendar = ({ selectDay }) => {
       try {
         //fetch available dates from the backend
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/getAvailableDates?month=${
-            month + 1
-          }&year=${year}`,
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/consultation/available-dates?month=${month + 1}&year=${year}`,
           {
             method: 'GET',
             credentials: 'include',
