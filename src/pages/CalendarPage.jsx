@@ -77,6 +77,8 @@ export const CalendarPage = () => {
         const data = await response.json();
         console.log('Available timeslots:', data);
         setAvailableTimeslots((prev) => {
+          console.log(prev);
+          console.log('Setting available timeslots:', data.availableTimeslots);
           return data.availableTimeslots;
         });
       } catch (error) {
