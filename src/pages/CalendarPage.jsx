@@ -51,13 +51,14 @@ export const CalendarPage = () => {
 
   useEffect(() => {
     const fetchAvailableHours = async () => {
+      console.log(date.day);
       if (!date.day) return;
 
       try {
         const response = await fetch(
           `${
             import.meta.env.VITE_API_URL
-          }/api/consultation/available-timeslots?date=${date.year}-${
+          }/api/consultation/available-timeslots?date=${date.year}-0${
             date.month + 1
           }-${date.day}`,
           {
