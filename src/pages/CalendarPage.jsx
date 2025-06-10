@@ -89,6 +89,8 @@ export const CalendarPage = () => {
     fetchAvailableHours();
   }, [date.day, date.month, date.year]);
 
+  console.log(date.day);
+
   return (
     <Layout
       layout="grid"
