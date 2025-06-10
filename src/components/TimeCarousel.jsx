@@ -13,12 +13,16 @@ const generateTimeSlots = () => {
 
 const TimeCarousel = ({ selectTime, availableTimeslots }) => {
   const slots = generateTimeSlots();
+  console.log('Available timeslots:', availableTimeslots);
 
   return (
     <div className="time-carousel responsive-carousel">
       <div className="time-carousel-track">
         {slots.map((slot, index) => {
-          const isAvailable = availableTimeslots.includes(slot);
+          const isAvailable =
+            availableTimeslots.length() > 0
+              ? availableTimeslots.includes(slot)
+              : false;
           const availableClass = isAvailable ? 'available' : '';
 
           <button

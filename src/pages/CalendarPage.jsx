@@ -41,7 +41,7 @@ export const CalendarPage = () => {
         day: day,
       };
     });
-    console.log('Selected day:', date.day);
+    // console.log('Selected day:', date.day);
     // call getAvailableTimeslots API
   };
 
@@ -76,7 +76,9 @@ export const CalendarPage = () => {
 
         const data = await response.json();
         console.log('Available timeslots:', data);
-        setAvailableTimeslots(data.availableTimeslots);
+        setAvailableTimeslots((prev) => {
+          data.availableTimeslots;
+        });
       } catch (error) {
         console.error('Error fetching available timeslots:', error);
         setTime([]);
