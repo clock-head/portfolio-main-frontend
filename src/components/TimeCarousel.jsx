@@ -11,23 +11,26 @@ const generateTimeSlots = () => {
   return slots;
 };
 
-const TimeCarousel = ({ selectTime }) => {
+const TimeCarousel = ({ selectTime, availableTimeslots }) => {
   const slots = generateTimeSlots();
 
   return (
     <div className="time-carousel responsive-carousel">
       <div className="time-carousel-track">
-        {slots.map((slot, index) => (
+        {slots.map((slot, index) => {
+          const isAvailable = availableTimeslots.includes(slot);
+          const availableClass = isAvailable ? 'available' : '';
+
           <button
             onClick={() => {
               selectTime(slot);
             }}
             key={index}
-            className="time-carousel-item"
+            className={`time-carousel-item ${availableClass}`}
           >
             {slot}
-          </button>
-        ))}
+          </button>;
+        })}
       </div>
     </div>
   );

@@ -47,6 +47,10 @@
   color: #3c7179;
 }
 
+.time-carousel-item.available {
+  background-color: rgba(193, 43, 209, 0.4);
+}
+
 .time-carousel-item:hover {
   color: #2edffa;
   background-color: rgba(255, 255, 255, 0.1);

@@ -19,6 +19,7 @@ export const CalendarPage = () => {
   });
 
   const [time, setTime] = useState(null);
+  const [availableTimeslots, setAvailableTimeslots] = useState([]);
   const context = {
     section: {
       layout: 'grid',
@@ -75,7 +76,7 @@ export const CalendarPage = () => {
 
         const data = await response.json();
         console.log('Available timeslots:', data);
-        setTime(data.availableTimeslots);
+        setAvailableTimeslots(data.availableTimeslots);
       } catch (error) {
         console.error('Error fetching available timeslots:', error);
         setTime([]);
@@ -122,7 +123,12 @@ export const CalendarPage = () => {
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
         </Card>
-        {date.day && <TimeCarousel selectTime={selectTime}></TimeCarousel>}
+        {date.day && (
+          <TimeCarousel
+            selectTime={selectTime}
+            availableTimeslots={availableTimeslots}
+          ></TimeCarousel>
+        )}
       </Section>
     </Layout>
   );
