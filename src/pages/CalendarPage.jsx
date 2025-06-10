@@ -37,7 +37,7 @@ export const CalendarPage = () => {
     setDate((prevDate) => {
       return {
         ...prevDate,
-        day: date.day,
+        day: day,
       };
     });
     console.log('Selected day:', date.day);
@@ -51,7 +51,6 @@ export const CalendarPage = () => {
 
   useEffect(() => {
     const fetchAvailableHours = async () => {
-      console.log(date.day);
       if (!date.day) return;
 
       try {

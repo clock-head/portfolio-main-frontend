@@ -59,11 +59,10 @@ const Calendar = ({ selectDay, date }) => {
       ))}
       {calendarDays.map((day) => {
         const isAvailable = availableDates.includes(day);
-        date.day = day;
 
         return (
           <Unit key={day}>
-            <Day day={date.day} selectDay={selectDay} isAvailable={isAvailable}>
+            <Day day={day} selectDay={selectDay} isAvailable={isAvailable}>
               {day}
             </Day>
           </Unit>
