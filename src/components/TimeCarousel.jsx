@@ -20,7 +20,7 @@ const TimeCarousel = ({ selectTime, availableTimeslots }) => {
       <div className="time-carousel-track">
         {slots.map((slot, index) => {
           const isAvailable =
-            availableTimeslots.length() > 0
+            availableTimeslots.length > 0
               ? availableTimeslots.includes(slot)
               : false;
           const availableClass = isAvailable ? 'available' : '';
