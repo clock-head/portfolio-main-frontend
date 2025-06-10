@@ -10,7 +10,14 @@ import TimeCarousel from '../components/TimeCarousel';
 import AppointmentDetails from '../components/AppointmentDetails';
 
 export const CalendarPage = () => {
-  const [day, setDay] = useState(null);
+  const today = new Date();
+  // getMonth() returns 0-11, so we add 1
+  const [date, setDate] = useState({
+    day: null,
+    month: today.getMonth(),
+    year: today.getFullYear(),
+  });
+
   const [time, setTime] = useState(null);
   const context = {
     section: {
@@ -27,8 +34,13 @@ export const CalendarPage = () => {
   };
 
   const selectDay = (day) => {
-    setDay((prevDay) => day);
-    console.log('Selected day:', day);
+    setDate((prevDate) => {
+      return {
+        ...prevDate,
+        day: date.day,
+      };
+    });
+    console.log('Selected day:', date.day);
     // call getAvailableTimeslots API
   };
 
@@ -36,6 +48,41 @@ export const CalendarPage = () => {
     setTime((prevTime) => hour);
     // display form to fill in details
   };
+
+  useEffect(() => {
+    const fetchAvailableHours = async () => {
+      if (!date.day) return;
+
+      try {
+        const response = await fetch(
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/consultation/available-timeslots?date=${date.year}-${
+            date.month
+          }-${date.day}`,
+          {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Available timeslots:', data);
+        setTime(data.availableTimeslots);
+      } catch (error) {
+        console.error('Error fetching available timeslots:', error);
+        setTime([]);
+      }
+    };
+    fetchAvailableHours();
+  }, [date.day, date.month, date.year]);
 
   return (
     <Layout
@@ -47,7 +94,7 @@ export const CalendarPage = () => {
       context={context}
     >
       <Section layout="appointment-grid" padding="py-6">
-        {day && <AppointmentDetails time={time}></AppointmentDetails>}
+        {date.day && <AppointmentDetails time={time}></AppointmentDetails>}
 
         <Card
           title="Booking Calendar"
@@ -72,10 +119,10 @@ export const CalendarPage = () => {
           }
         >
           <Unit layout="flex" justifyContent="center" alignItems="center">
-            <Calendar selectDay={selectDay} />
+            <Calendar selectDay={selectDay} date={date} />
           </Unit>
         </Card>
-        {day && <TimeCarousel selectTime={selectTime}></TimeCarousel>}
+        {date.day && <TimeCarousel selectTime={selectTime}></TimeCarousel>}
       </Section>
     </Layout>
   );

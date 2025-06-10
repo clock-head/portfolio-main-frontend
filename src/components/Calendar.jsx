@@ -4,10 +4,10 @@ import Unit from './Unit';
 import './Calendar.css';
 import Day from './Day';
 
-const Calendar = ({ selectDay }) => {
+const Calendar = ({ selectDay, date }) => {
   const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
+  const year = date.year || today.getFullYear();
+  const month = date.month || today.getMonth();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, month, 1).getDay();
 
@@ -59,10 +59,11 @@ const Calendar = ({ selectDay }) => {
       ))}
       {calendarDays.map((day) => {
         const isAvailable = availableDates.includes(day);
+        date.day = day;
 
         return (
           <Unit key={day}>
-            <Day selectDay={selectDay} isAvailable={isAvailable}>
+            <Day day={date.day} selectDay={selectDay} isAvailable={isAvailable}>
               {day}
             </Day>
           </Unit>

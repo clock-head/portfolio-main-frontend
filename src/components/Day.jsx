@@ -1,17 +1,17 @@
 import React from 'react';
 import './Day.css'; // Assuming you have a CSS file for styling
 
-const Day = ({ children, selectDay, isAvailable }) => {
+const Day = ({ day, selectDay, isAvailable }) => {
   // const today = new Date();
   const availableClass = isAvailable ? 'available' : '';
 
   return (
     <div className="date-container">
       <button
-        onClick={() => selectDay(children)}
+        onClick={() => selectDay(day)}
         className={`date-button ${availableClass}`}
       >
-        <p className="date-value">{children}</p>
+        <p className="date-value">{day}</p>
       </button>
     </div>
   );
