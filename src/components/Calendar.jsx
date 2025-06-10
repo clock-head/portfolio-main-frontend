@@ -8,10 +8,10 @@ const Calendar = ({ selectDay }) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth();
-  // const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, month, 1).getDay();
 
-  // const calendarDays = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+  const calendarDays = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
   const [availableDates, setAvailableDates] = useState([]);
 
@@ -57,11 +57,17 @@ const Calendar = ({ selectDay }) => {
       {Array.from({ length: firstDayOfMonth }, (_, i) => (
         <Unit key={i}></Unit>
       ))}
-      {availableDates.map((day) => (
-        <Unit key={day.getDate()}>
-          <Day selectDay={selectDay}>{day.getDate()}</Day>
-        </Unit>
-      ))}
+      {calendarDays.map((day) => {
+        const isAvailable = availableDates.includes(day);
+
+        return (
+          <Unit key={day}>
+            <Day selectDay={selectDay} isAvailable={isAvailable}>
+              {day}
+            </Day>
+          </Unit>
+        );
+      })}
     </Section>
   );
 };

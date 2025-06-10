@@ -15,6 +15,10 @@
   background-color: var(--secondary-light);
 }
 
+.available {
+  background-color: rgba(193, 43, 209, 0.4);
+}
+
 .date-value {
   font-size: 1rem;
   font-weight: 600;
