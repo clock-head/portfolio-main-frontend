@@ -11,7 +11,7 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
 
     event.preventDefault();
     const formData = new FormData(event.target);
-    const username = formData.get('email');
+    const email = formData.get('email');
     const password = formData.get('password');
     let firstName = '';
     let lastName = '';
@@ -22,7 +22,7 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
     }
 
     const payload = {
-      username,
+      email,
       password,
       ...(isSignup && { firstName, lastName }),
     };
