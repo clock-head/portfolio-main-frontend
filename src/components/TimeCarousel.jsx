@@ -13,27 +13,28 @@ const generateTimeSlots = () => {
 
 const TimeCarousel = ({ selectTime, availableTimeslots }) => {
   const slots = generateTimeSlots();
-  console.log('Available timeslots:', availableTimeslots);
+  // console.log('Available timeslots:', availableTimeslots);
 
   return (
     <div className="time-carousel responsive-carousel">
       <div className="time-carousel-track">
         {slots.map((slot, index) => {
-          const isAvailable =
-            availableTimeslots.length > 0
-              ? availableTimeslots.includes(slot)
-              : false;
+          console.log(slot);
+          const isAvailable = availableTimeslots.includes(slot);
+          console.log(availableTimeslots);
           const availableClass = isAvailable ? 'available' : '';
 
-          <button
-            onClick={() => {
-              selectTime(slot);
-            }}
-            key={index}
-            className={`time-carousel-item ${availableClass}`}
-          >
-            {slot}
-          </button>;
+          return (
+            <button
+              onClick={() => {
+                selectTime(slot);
+              }}
+              key={index}
+              className={`time-carousel-item ${availableClass}`}
+            >
+              {slot}
+            </button>
+          );
         })}
       </div>
     </div>

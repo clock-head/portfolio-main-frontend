@@ -54,13 +54,16 @@ export const CalendarPage = () => {
     const fetchAvailableHours = async () => {
       if (!date.day) return;
 
+      const monthString = (date.month + 1).toString().padStart(2, '0');
+      const dayString = date.day.toString().padStart(2, '0');
+
       try {
         const response = await fetch(
           `${
             import.meta.env.VITE_API_URL
-          }/api/consultation/available-timeslots?date=${date.year}-0${
-            date.month + 1
-          }-${date.day}`,
+          }/api/consultation/available-timeslots?date=${
+            date.year
+          }-${monthString}-${dayString}`,
           {
             method: 'GET',
             credentials: 'include',
@@ -83,7 +86,7 @@ export const CalendarPage = () => {
         });
       } catch (error) {
         console.error('Error fetching available timeslots:', error);
-        setTime([]);
+        setAvailableTimeslots([]);
       }
     };
     fetchAvailableHours();
