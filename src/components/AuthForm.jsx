@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AuthForm.css'; // Assuming you have a CSS file for styling
 import Unit from './Unit';
 import Button from './Button';
-import ErrorModal from './ErrorModal';
+import Modal from './Modal';
 
 const Form = ({ isSignup, isLogin, toggleAuthState }) => {
-  const [error, setError] = React.useState(null);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
   const handleSubmit = async (event) => {
     const auth = isLogin ? 'login' : 'signup';
 
@@ -48,6 +50,8 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
       }
 
       const data = await response.json();
+      setSuccess('Login successful!'); // You can set a success message if needed
+
       console.log('Login successful:', data);
       // Handle successful login (e.g., redirect or show a success message)
     } catch (error) {
@@ -65,10 +69,21 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
   return (
     <div>
       {error && (
-        <ErrorModal
+        <Modal
+          type="error"
           message={error}
           onClose={() => {
             setError(null);
+          }}
+        />
+      )}
+
+      {success && (
+        <Modal
+          type="success"
+          message={success}
+          onClose={() => {
+            setSuccess(null);
           }}
         />
       )}
