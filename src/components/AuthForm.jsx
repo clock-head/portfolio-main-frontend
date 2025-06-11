@@ -2,28 +2,47 @@ import React from 'react';
 import './AuthForm.css'; // Assuming you have a CSS file for styling
 import Unit from './Unit';
 import Button from './Button';
+import ErrorModal from './ErrorModal';
 
 const Form = ({ isSignup, isLogin, toggleAuthState }) => {
+  const [error, setError] = React.useState(null);
   const handleSubmit = async (event) => {
+    const auth = isLogin ? 'login' : 'signup';
+
     event.preventDefault();
     const formData = new FormData(event.target);
-    const username = formData.get('username');
+    const username = formData.get('email');
     const password = formData.get('password');
+    let firstName = '';
+    let lastName = '';
+
+    if (isSignup) {
+      firstName = formData.get('first-name');
+      lastName = formData.get('last-name');
+    }
+
+    const payload = {
+      username,
+      password,
+      ...(isSignup && { firstName, lastName }),
+    };
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        `${import.meta.env.VITE_API_URL}/api/auth/${auth}`,
         {
           method: 'POST',
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ username, password }),
+          body: JSON.stringify(payload),
         }
       );
 
       if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.message || 'An error occurred during login/signup');
         throw new Error(`Login failed: ${response.status}`);
       }
 
@@ -38,6 +57,15 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal
+          message={error}
+          onClose={() => {
+            setError(null);
+          }}
+        />
+      )}
+
       <form onSubmit={handleSubmit} className="auth-form">
         <Unit layout="flex" gap="xl" alignItems="center">
           <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
