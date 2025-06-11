@@ -8,10 +8,13 @@
 :root {
   --primary-black: #000000;
   --secondary-base: #23a3ac; /* Adjust to preferred accent */
+  --secondary-bg: rgba(48, 177, 209, 0.5);
   --secondary-hover: rgba(48, 177, 209, 0.5);
+
   --secondary-light: rgba(231, 240, 97, 0.7);
-  --tertiary-light: #e8439e;
-  --text-light: #ffffff;
+  --tertiary-base: rgba(193, 43, 209, 0.4);
+  --tertiary-light: rgba(215, 27, 236, 0.9);
+  --text-light: #b4e4e7;
 }
 
 /* .app-root {

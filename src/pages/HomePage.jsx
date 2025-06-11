@@ -1,5 +1,5 @@
 // Homepage Composition (example)
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 import Unit from '../components/Unit';
@@ -7,6 +7,8 @@ import { LayoutProvider } from '../layout/LayoutProvider';
 import { Card } from '../components/Card';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
+import LoginForm from '../components/AuthForm';
+import AuthFlow from '../components/AuthFlow';
 
 export const HomePage = () => {
   const context = {
@@ -24,6 +26,14 @@ export const HomePage = () => {
       background: 'bg-dark',
     },
   };
+  // const [isLogin, setIsLogin] = useState(false);
+  // const [isSignup, setIsSignup] = useState(false);
+
+  // const toggleAuthState = (state) => {
+  //   setIsLogin((prevState) => !prevState);
+  //   setIsSignup((prevState) => !prevState);
+  // };
+
   return (
     <>
       <Layout
@@ -56,10 +66,11 @@ export const HomePage = () => {
               </Unit>
             }
           >
-            <p>
+            <AuthFlow />
+            {/* <p>
               This site is a showcase of modular design, built for speed and
               clarity.
-            </p>
+            </p> */}
           </Card>
         </Section>
       </Layout>

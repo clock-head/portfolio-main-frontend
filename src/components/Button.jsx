@@ -19,6 +19,8 @@ const Button = ({
     secondary: 'btn-secondary',
     outline: 'btn-outline',
     carousel: 'btn-carousel',
+    signup: 'btn-signup',
+    authSecondary: 'btn-auth-secondary',
   };
 
   return (
