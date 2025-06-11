@@ -42,7 +42,8 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.message || 'An error occurred during login/signup');
+        console.log(errorData);
+        setError(errorData || 'An error occurred during login/signup');
         throw new Error(`Login failed: ${response.status}`);
       }
 
