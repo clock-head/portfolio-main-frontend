@@ -51,7 +51,13 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
       console.log('Login successful:', data);
       // Handle successful login (e.g., redirect or show a success message)
     } catch (error) {
-      console.error('Error during login:', error);
+      if (error.response && error.response.status === 429) {
+        const message = error.response.data.message;
+        // Show this message to the user
+        setError(message || 'Too many requests. Please try again later.');
+        return;
+      }
+      console.error('Error during login:', error.reponse);
       // Handle login error (e.g., show an error message)
     }
   };
