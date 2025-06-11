@@ -19,9 +19,7 @@ const TimeCarousel = ({ selectTime, availableTimeslots }) => {
     <div className="time-carousel responsive-carousel">
       <div className="time-carousel-track">
         {slots.map((slot, index) => {
-          console.log(slot);
           const isAvailable = availableTimeslots.includes(slot);
-          console.log(availableTimeslots);
           const availableClass = isAvailable ? 'available' : '';
 
           return (

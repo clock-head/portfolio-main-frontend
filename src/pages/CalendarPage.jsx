@@ -7,7 +7,7 @@ import Unit from '../components/Unit';
 import Layout from '../components/Layout';
 import Calendar from '../components/Calendar';
 import TimeCarousel from '../components/TimeCarousel';
-import AppointmentDetails from '../components/AppointmentDetails';
+import ConsultationBookingForm from '../components/ConsultationBookingForm';
 
 export const CalendarPage = () => {
   const today = new Date();
@@ -18,7 +18,7 @@ export const CalendarPage = () => {
     year: today.getFullYear(),
   });
 
-  const [time, setTime] = useState(null);
+  const [timeSelected, setTimeselected] = useState(null);
   const [availableTimeslots, setAvailableTimeslots] = useState([]);
   const context = {
     section: {
@@ -46,8 +46,12 @@ export const CalendarPage = () => {
   };
 
   const selectTime = (hour) => {
-    setTime((prevTime) => hour);
+    console.log('Selected time:', hour);
+    setTimeselected((prevTime) => hour);
     // display form to fill in details
+    if (availableTimeslots.includes(timeSelected)) {
+      console.log('Time is available:', hour);
+    }
   };
 
   useEffect(() => {
@@ -104,7 +108,11 @@ export const CalendarPage = () => {
       context={context}
     >
       <Section layout="appointment-grid" padding="py-6">
-        {date.day && <AppointmentDetails time={time}></AppointmentDetails>}
+        {date.day && (
+          <ConsultationBookingForm
+            time={timeSelected}
+          ></ConsultationBookingForm>
+        )}
 
         <Card
           title="Booking Calendar"
