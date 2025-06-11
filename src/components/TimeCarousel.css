@@ -57,6 +57,10 @@
   border: 1px solid rgba(33, 189, 216, 0.2);
 }
 
+.time-carousel-grid-item {
+  grid-area: time-carousel;
+}
+
 /* ————— MOBILE/TABLET ————— */
 @media screen and (max-width: 768px) {
   .time-carousel {

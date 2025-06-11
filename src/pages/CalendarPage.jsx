@@ -108,7 +108,7 @@ export const CalendarPage = () => {
       context={context}
     >
       <Section layout="appointment-grid" padding="py-6">
-        {date.day && (
+        {timeSelected && (
           <ConsultationBookingForm
             time={timeSelected}
           ></ConsultationBookingForm>

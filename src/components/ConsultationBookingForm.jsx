@@ -3,6 +3,7 @@ import './ConsultationBookingForm.css';
 
 const ConsultationBookingForm = ({ time, isAvailable }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [name, setName] = useState('');
   useEffect(() => {
     const fetchCurrentUser = async () => {
       if (!isAvailable) return;
@@ -24,6 +25,7 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
         const data = await response.json();
         setCurrentUser((prev) => data.user);
+        setName((prev) => `${data.user.firstName} ${data.user.lastName}`);
       } catch (error) {
         console.error('Error fetching current user:', error);
       }
@@ -71,27 +73,14 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
   return (
     <div className="booking-form">
-      <h3>{time}</h3>
+      <h3>{time || ''}</h3>
       {!isAvailable ? (
         <form onSubmit={handleSubmit}>
           <label>
-            First Name:
-            <input
-              type="text"
-              name="first-name"
-              value={currentUser?.firstName || ''}
-              readOnly
-            />
+            Full Name:
+            <input type="text" name="name" value={name || ''} readOnly />
           </label>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              name="last-name"
-              value={currentUser?.lastName || ''}
-              readOnly
-            />
-          </label>
+
           <label>
             Email:
             <input
