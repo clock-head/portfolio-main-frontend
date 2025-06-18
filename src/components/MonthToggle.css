@@ -1,0 +1,34 @@
+.month-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  /* padding: 10px 16px; */
+
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  font-family: sans-serif;
+}
+
+.arrow-button {
+  font-size: 20px;
+  padding: 0px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #59d5e6;
+  transition: background-color 0.2s ease;
+}
+
+.arrow-button:hover {
+  background-color: #8be3e9;
+}
+
+.month-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 5rem;
+  color: #4aacb9;
+}

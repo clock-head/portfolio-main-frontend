@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Calendar from '../components/Calendar';
 import TimeCarousel from '../components/TimeCarousel';
 import ConsultationBookingForm from '../components/ConsultationBookingForm';
+import MonthToggle from '../components/MonthToggle';
 
 export const CalendarPage = () => {
   const today = new Date();
@@ -56,6 +57,15 @@ export const CalendarPage = () => {
     }
   };
 
+  const toggleMonth = (month) => {
+    setDate((prevDate) => {
+      return {
+        ...prevDate,
+        month: month,
+      };
+    });
+  };
+
   useEffect(() => {
     const fetchAvailableHours = async () => {
       if (!date.day) return;
@@ -84,9 +94,9 @@ export const CalendarPage = () => {
         }
 
         const data = await response.json();
-        console.log('Available timeslots:', data);
+        // console.log('Available timeslots:', data);
         setAvailableTimeslots((prev) => {
-          console.log('Setting available timeslots:', data.availableTimeslots);
+          // console.log('Setting available timeslots:', data.availableTimeslots);
           return data.availableTimeslots;
         });
       } catch (error) {
@@ -140,6 +150,10 @@ export const CalendarPage = () => {
           }
         >
           <Unit layout="flex" justifyContent="center" alignItems="center">
+            <MonthToggle
+              month={date.month}
+              onChange={toggleMonth}
+            ></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
         </Card>
