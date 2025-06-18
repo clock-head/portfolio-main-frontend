@@ -5,15 +5,17 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [name, setName] = useState('');
 
-  const hour = time.slice(2);
+  const hour = time.slice(0, 2);
   const minutes = time.slice(-2);
-  console.log(hour);
-  console.log(minutes);
+  console.log('hour: ', hour);
+  console.log('minutes: ', minutes);
 
   const startTime = time;
   console.log(startTime);
   const endTime = minutes === '30' ? `${hour + 1}:00` : `${hour}:30`;
   console.log(endTime);
+
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -47,11 +49,11 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    // const formData = new FormData(event.target);
     const bookingDetails = {
       startTime: time,
-      endTime: formData.get('last-name'),
-      timeZone: 'Australia/Sydney',
+      endTime: endTime,
+      timeZone: timeZone,
     };
 
     try {
@@ -82,22 +84,17 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
   return (
     <div className="booking-form">
-      <h3>{time || ''}</h3>
+      {/* <h3>{time || ''}</h3> */}
       {!isAvailable ? (
         <form onSubmit={handleSubmit}>
           <label>
-            Full Name:
-            <input type="text" name="name" value={name || ''} readOnly />
+            Start Time:
+            <input type="text" name="name" value={startTime || ''} readOnly />
           </label>
 
           <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={currentUser?.email || ''}
-              readOnly
-            />
+            End Time:
+            <input type="email" name="email" value={endTime || ''} readOnly />
           </label>
           <label>
             Phone:
