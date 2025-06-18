@@ -84,7 +84,7 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
   return (
     <div className="booking-form">
-      {!isAvailable && 'Not Available'}
+      {!isAvailable && <h3 className="not-available">{'Not Available'}</h3>}
       {time ? (
         <form onSubmit={handleSubmit}>
           <label>
@@ -100,7 +100,9 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
             Phone:
             <input type="tel" name="phone" placeholder="optional" />
           </label>
-          <button type="submit">Book Consultation</button>
+          <button type="submit" disabled={!isAvailable}>
+            Book Consultation
+          </button>
         </form>
       ) : (
         <p>This time slot is not available.</p>

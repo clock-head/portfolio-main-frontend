@@ -15,6 +15,10 @@
   color: #2edffa;
 }
 
+.not-available {
+  color: #ff4d4f;
+}
+
 .booking-form label {
   display: block;
   margin-bottom: 1rem;

@@ -47,11 +47,9 @@ export const CalendarPage = () => {
   };
 
   const selectTime = (hour) => {
-    console.log('Selected time:', hour);
     setTimeselected((prevTime) => hour);
     // display form to fill in details
     if (availableTimeslots.includes(hour)) {
-      console.log('ran available flag');
       setIsAvailable((prev) => true);
     } else {
       setIsAvailable(() => false);
@@ -88,7 +86,6 @@ export const CalendarPage = () => {
         const data = await response.json();
         console.log('Available timeslots:', data);
         setAvailableTimeslots((prev) => {
-          console.log(prev);
           console.log('Setting available timeslots:', data.availableTimeslots);
           return data.availableTimeslots;
         });
