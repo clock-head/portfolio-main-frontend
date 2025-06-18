@@ -111,6 +111,7 @@ export const CalendarPage = () => {
       <Section layout="appointment-grid" padding="py-6">
         {timeSelected && (
           <ConsultationBookingForm
+            date={date}
             time={timeSelected}
             isAvailable={isAvailable}
           ></ConsultationBookingForm>

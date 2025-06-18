@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ConsultationBookingForm.css';
 
-const ConsultationBookingForm = ({ time, isAvailable }) => {
+const ConsultationBookingForm = ({ date, time, isAvailable }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [name, setName] = useState('');
 
@@ -85,6 +85,7 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
   return (
     <div className="booking-form">
       {!isAvailable && <h3 className="not-available">{'Not Available'}</h3>}
+      {isAvailable && <h3>{`${date.day}-${date.month}`}</h3>}
       {time ? (
         <form onSubmit={handleSubmit}>
           <label>
