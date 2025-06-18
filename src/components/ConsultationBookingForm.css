@@ -61,3 +61,10 @@
   background-color: #2edffa;
   color: #1f8a9a;
 }
+
+.booking-form button[type='submit'].not-available {
+  background-color: #646c6d;
+  color: #454e50;
+  cursor: not-allowed;
+  pointer-events: none;
+}

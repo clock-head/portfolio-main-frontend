@@ -100,7 +100,11 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
             Phone:
             <input type="tel" name="phone" placeholder="optional" />
           </label>
-          <button type="submit" disabled={!isAvailable}>
+          <button
+            type="submit"
+            disabled={!isAvailable}
+            className={!isAvailable ? 'not-available' : ''}
+          >
             Book Consultation
           </button>
         </form>
