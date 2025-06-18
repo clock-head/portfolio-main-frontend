@@ -58,11 +58,12 @@ export const CalendarPage = () => {
     }
   };
 
-  const toggleMonth = (month) => {
+  const toggleMonth = (date) => {
     setDate((prevDate) => {
       return {
-        ...prevDate,
-        month: month,
+        day: null,
+        month: date.getMonth(),
+        year: date.getFullYear(),
       };
     });
   };
@@ -151,7 +152,7 @@ export const CalendarPage = () => {
           }
         >
           <Unit layout="flex" justifyContent="center" alignItems="center">
-            <MonthToggle today={today} onChange={toggleMonth}></MonthToggle>
+            <MonthToggle date={date} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
         </Card>
