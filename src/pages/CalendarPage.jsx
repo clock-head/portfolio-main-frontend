@@ -12,6 +12,7 @@ import MonthToggle from '../components/MonthToggle';
 
 export const CalendarPage = () => {
   const today = new Date();
+  console.log(today);
   // getMonth() returns 0-11, so we add 1
   const [date, setDate] = useState({
     day: null,
