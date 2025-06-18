@@ -12,7 +12,7 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
   const startTime = time;
   console.log(startTime);
-  const endTime = minutes === '30' ? `${hour + 1}:00` : `${hour}:30`;
+  const endTime = minutes === '30' ? `${parseInt(hour) + 1}:00` : `${hour}:30`;
   console.log(endTime);
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
