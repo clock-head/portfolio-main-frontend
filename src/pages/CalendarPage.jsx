@@ -151,10 +151,7 @@ export const CalendarPage = () => {
           }
         >
           <Unit layout="flex" justifyContent="center" alignItems="center">
-            <MonthToggle
-              month={date.month}
-              onChange={toggleMonth}
-            ></MonthToggle>
+            <MonthToggle today={today} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
         </Card>

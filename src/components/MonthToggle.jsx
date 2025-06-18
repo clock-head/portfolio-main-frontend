@@ -1,11 +1,11 @@
 import { format, addMonths, subMonths } from 'date-fns';
 import './MonthToggle.css';
 
-export default function MonthToggle({ month, onChange }) {
-  const handlePrev = () => onChange(subMonths(month, 1));
-  const handleNext = () => onChange(addMonths(month, 1));
+export default function MonthToggle({ today, onChange }) {
+  const handlePrev = () => onChange(subMonths(today, 1));
+  const handleNext = () => onChange(addMonths(today, 1));
 
-  console.log(format(month, 'MMMM'));
+  console.log(format(today, 'MMMM'));
 
   return (
     <div className="month-toggle">
@@ -16,7 +16,7 @@ export default function MonthToggle({ month, onChange }) {
       >
         &lsaquo;
       </button>
-      <div className="month-label">{format(month, 'MMMM')}</div>
+      <div className="month-label">{format(today, 'MMMM')}</div>
       <button
         className="arrow-button"
         onClick={handleNext}
