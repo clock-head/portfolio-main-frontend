@@ -4,6 +4,17 @@ import './ConsultationBookingForm.css';
 const ConsultationBookingForm = ({ time, isAvailable }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [name, setName] = useState('');
+
+  const hour = time.slice(2);
+  const minutes = time.slice(-2);
+  console.log(hour);
+  console.log(minutes);
+
+  const startTime = time;
+  console.log(startTime);
+  const endTime = minutes === '30' ? `${hour + 1}:00` : `${hour}:30`;
+  console.log(endTime);
+
   useEffect(() => {
     const fetchCurrentUser = async () => {
       if (!isAvailable) return;
@@ -38,16 +49,14 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const bookingDetails = {
-      time: time,
-      firstName: formData.get('first-name'),
-      lastName: formData.get('last-name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
+      startTime: time,
+      endTime: formData.get('last-name'),
+      timeZone: 'Australia/Sydney',
     };
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/consultation/book`,
+        `${import.meta.env.VITE_API_URL}/api/consultation/create`,
         {
           method: 'POST',
           credentials: 'include',

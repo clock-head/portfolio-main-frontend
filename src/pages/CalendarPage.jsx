@@ -67,7 +67,7 @@ export const CalendarPage = () => {
             import.meta.env.VITE_API_URL
           }/api/consultation/available-timeslots?date=${
             date.year
-          }-${monthString}-${dayString}`,
+          }-${monthString}-${dayString}?`,
           {
             method: 'GET',
             credentials: 'include',
