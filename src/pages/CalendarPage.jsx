@@ -19,6 +19,7 @@ export const CalendarPage = () => {
   });
 
   const [timeSelected, setTimeselected] = useState(null);
+  const [isAvailable, setIsAvailable] = useState(false);
   const [availableTimeslots, setAvailableTimeslots] = useState([]);
   const context = {
     section: {
@@ -50,7 +51,7 @@ export const CalendarPage = () => {
     setTimeselected((prevTime) => hour);
     // display form to fill in details
     if (availableTimeslots.includes(timeSelected)) {
-      console.log('Time is available:', hour);
+      setIsAvailable(() => true);
     }
   };
 
@@ -111,6 +112,7 @@ export const CalendarPage = () => {
         {timeSelected && (
           <ConsultationBookingForm
             time={timeSelected}
+            isAvailable={isAvailable}
           ></ConsultationBookingForm>
         )}
 

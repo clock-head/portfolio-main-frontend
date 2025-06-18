@@ -84,8 +84,8 @@ const ConsultationBookingForm = ({ time, isAvailable }) => {
 
   return (
     <div className="booking-form">
-      {/* <h3>{time || ''}</h3> */}
-      {!isAvailable ? (
+      {!isAvailable && 'Not Available'}
+      {time ? (
         <form onSubmit={handleSubmit}>
           <label>
             Start Time:
