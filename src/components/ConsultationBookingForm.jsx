@@ -85,7 +85,7 @@ const ConsultationBookingForm = ({ date, time, isAvailable }) => {
   return (
     <div className="booking-form">
       {!isAvailable && <h3 className="not-available">{'Not Available'}</h3>}
-      {isAvailable && <h3>{`${date.day}-${date.month}`}</h3>}
+      {isAvailable && <h3>{`${date.day}-0${date.month + 1}`}</h3>}
       {time ? (
         <form onSubmit={handleSubmit}>
           <label>
