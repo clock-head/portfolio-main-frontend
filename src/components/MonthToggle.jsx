@@ -5,7 +5,7 @@ export default function MonthToggle({ month, onChange }) {
   const handlePrev = () => onChange(subMonths(month, 1));
   const handleNext = () => onChange(addMonths(month, 1));
 
-  console.log(month);
+  console.log(format(month, 'MMMM'));
 
   return (
     <div className="month-toggle">
