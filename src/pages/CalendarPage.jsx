@@ -50,7 +50,8 @@ export const CalendarPage = () => {
     console.log('Selected time:', hour);
     setTimeselected((prevTime) => hour);
     // display form to fill in details
-    if (availableTimeslots.includes(timeSelected)) {
+    if (availableTimeslots.includes(hour)) {
+      console.log('ran available flag');
       setIsAvailable((prev) => true);
     } else {
       setIsAvailable(() => false);
