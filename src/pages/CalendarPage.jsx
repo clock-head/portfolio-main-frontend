@@ -66,6 +66,8 @@ export const CalendarPage = () => {
         year: date.getFullYear(),
       };
     });
+
+    setTimeselected(() => null);
   };
 
   useEffect(() => {

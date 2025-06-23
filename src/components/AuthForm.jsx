@@ -3,10 +3,12 @@ import './AuthForm.css'; // Assuming you have a CSS file for styling
 import Unit from './Unit';
 import Button from './Button';
 import Modal from './Modal';
+import { useNavigate } from 'react-router-dom';
 
 const Form = ({ isSignup, isLogin, toggleAuthState }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     const auth = isLogin ? 'login' : 'signup';
@@ -15,10 +17,12 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
+    let confirmPassword = '';
     let firstName = '';
     let lastName = '';
 
     if (isSignup) {
+      confirmPassword = formData.get('confirm-password');
       firstName = formData.get('first-name');
       lastName = formData.get('last-name');
     }
@@ -26,7 +30,7 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
     const payload = {
       email,
       password,
-      ...(isSignup && { firstName, lastName }),
+      ...(isSignup && { confirmPassword, firstName, lastName }),
     };
 
     try {
@@ -44,14 +48,14 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.log(errorData);
+        // console.log(errorData);
         setError(errorData.message || 'An error occurred during login/signup');
         throw new Error(`Login FAailed: ${response.status}`);
       }
 
       const data = await response.json();
-      setSuccess('Login successful!'); // You can set a success message if needed
-
+      setSuccess(`${auth} successful!`); // You can set a success message if needed
+      navigate('/verify');
       console.log('Login successful:', data);
       // Handle successful login (e.g., redirect or show a success message)
     } catch (error) {
@@ -113,6 +117,15 @@ const Form = ({ isSignup, isLogin, toggleAuthState }) => {
 
         {isSignup && (
           <>
+            <div className="form-group">
+              <label htmlFor="confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                required
+              />
+            </div>
             <div className="form-group">
               <label htmlFor="first-name">First Name</label>
               <input type="text" id="first-name" name="first-name" required />

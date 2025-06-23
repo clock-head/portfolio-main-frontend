@@ -30,6 +30,18 @@
   gap: 1rem;
 }
 
+@media screen and (max-width: 768px) {
+  .section.appointment-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 0.7fr;
+    grid-template-areas:
+      'details'
+      'calendar'
+      'time-carousel';
+    gap: 1rem;
+  }
+}
+
 section.grid-calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
