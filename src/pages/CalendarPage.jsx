@@ -28,6 +28,7 @@ export const CalendarPage = () => {
       layout: 'grid',
       background: 'bg-dark',
       justifyItems: 'center',
+
       // padding: 'py-6',
     },
 

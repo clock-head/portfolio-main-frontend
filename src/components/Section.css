@@ -33,12 +33,13 @@
 @media screen and (max-width: 768px) {
   .section.appointment-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 0.7fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
     grid-template-areas:
       'details'
       'calendar'
       'time-carousel';
-    gap: 1rem;
+    gap: 0.5rem;
+    align-content: start;
   }
 }
 
