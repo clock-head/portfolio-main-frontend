@@ -81,9 +81,19 @@
     font-size: 1rem;
   }
 
+  .booking-form h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2edffa;
+  }
+
+  .booking-form h3.not-available {
+    color: #ff4d4f;
+  }
+
   .booking-form label {
     display: flex;
-    margin: 0.5rem 2rem;
+    margin: 0rem 1rem;
   }
 
   .booking-form input[type='text'],
@@ -91,15 +101,19 @@
   .booking-form input[type='tel'] {
     width: 100%;
     padding: 0.5rem;
+    height: 2rem;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     color: #3c7179;
     font-size: 1rem;
-    margin: 0rem 2rem;
+    margin: 0rem 1rem;
   }
 
   .booking-form button[type='submit'] {
     padding: 0.5rem;
+    height: 2rem;
+    max-width: 300px;
+    margin: 1rem 1.5rem;
   }
 }
