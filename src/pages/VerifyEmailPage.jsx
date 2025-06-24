@@ -18,7 +18,9 @@ export const VerifyEmailPage = () => {
     const verifyToken = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/auth/verify-email`,
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/auth/verify-email?token=${token}`,
           {
             method: 'PATCH',
             credential: 'include',
