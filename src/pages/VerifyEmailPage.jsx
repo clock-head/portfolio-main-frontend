@@ -5,6 +5,7 @@ import Unit from '../components/Unit';
 import { Card } from '../components/Card';
 import Button from '../components/Button';
 import { useQuery } from '../hooks/useQuery';
+import Modal from '../components/Modal';
 
 export const VerifyEmailPage = () => {
   const [email, setEmail] = useState('');
