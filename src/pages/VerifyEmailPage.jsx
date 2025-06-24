@@ -18,7 +18,7 @@ export const VerifyEmailPage = () => {
     const verifyToken = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/consultation/verify-email`,
+          `${import.meta.env.VITE_API_URL}/api/auth/verify-email`,
           {
             method: 'PATCH',
             credential: 'include',
@@ -46,9 +46,7 @@ export const VerifyEmailPage = () => {
   const sendVerificationEmail = async () => {
     try {
       const response = await fetch(
-        `${
-          import.meta.env.VITE_API_URL
-        }/api/consultation/send-verification-email`,
+        `${import.meta.env.VITE_API_URL}/api/auth/send-verification-email`,
         {
           method: 'POST',
           credentials: 'include',
