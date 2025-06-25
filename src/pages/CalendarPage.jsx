@@ -24,6 +24,8 @@ export const CalendarPage = () => {
   const [timeSelected, setTimeselected] = useState(null);
   const [isAvailable, setIsAvailable] = useState(false);
   const [availableTimeslots, setAvailableTimeslots] = useState([]);
+  const [navDropDown, setNavDropDown] = useState(false);
+
   const context = {
     section: {
       layout: 'grid',
@@ -71,6 +73,10 @@ export const CalendarPage = () => {
     });
 
     setTimeselected(() => null);
+  };
+
+  const toggleNavMobile = () => {
+    setNavDropDown((prev) => !prev);
   };
 
   useEffect(() => {
@@ -141,18 +147,32 @@ export const CalendarPage = () => {
           className="calendar-grid-item"
           footer={
             <Unit layout="flex" gap="sm" className="button-group-flex">
-              <Link to="/">
-                <Button variant="primary">Home</Button>
-              </Link>
-              <Link to="/projects">
-                <Button variant="outline">View Projects</Button>
-              </Link>
-              <Link to="/calendar">
-                <Button variant="outline">Calendar</Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline">Contact Me</Button>
-              </Link>
+              {navDropDown && (
+                <>
+                  <Link to="/">
+                    <Button variant="primary">Home</Button>
+                  </Link>
+                  <Link to="/projects">
+                    <Button variant="outline">View Projects</Button>
+                  </Link>
+                  <Link to="/calendar">
+                    <Button variant="outline" onClick={toggleNavMobile}>
+                      Calendar
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button variant="outline">Contact Me</Button>
+                  </Link>
+                </>
+              )}
+
+              {
+                <Link to="/calendar">
+                  <Button variant="outline" onClick={toggleNavMobile}>
+                    Calendar
+                  </Button>
+                </Link>
+              }
             </Unit>
           }
         >
