@@ -23,6 +23,7 @@ export const CalendarPage = () => {
 
   const windowSize = useWindowSize();
   const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
+  const layoutPlacement = windowSize.width <= 440 ? 'start' : 'center';
 
   // getMonth() returns 0-11, so we add 1
   const [date, setDate] = useState({
@@ -136,7 +137,7 @@ export const CalendarPage = () => {
       layout="grid"
       spacing="gap-md"
       alignContent="center"
-      justifyItems="center"
+      justifyItems={layoutPlacement}
       background="bg-dark"
       context={context}
     >
@@ -185,11 +186,7 @@ export const CalendarPage = () => {
             </Unit>
           }
         >
-          <Unit
-            justifyContent="center"
-            justifyItems="center"
-            alignItems="center"
-          >
+          <Unit justifyContent="center" alignItems="center">
             <MonthToggle date={date} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>

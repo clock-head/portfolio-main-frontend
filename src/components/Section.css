@@ -38,7 +38,19 @@
       'time-carousel'
       'calendar';
     gap: 0.5rem;
-    align-content: start;
+    /* align-content: start; */
+  }
+}
+@media screen and (max-width: 450px) {
+  .section.appointment-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr, 1fr;
+    grid-template-areas:
+      'time-carousel'
+      'calendar';
+    gap: 0.5rem;
+    /* align-content: start; */
+    max-width: 300px;
   }
 }
 
