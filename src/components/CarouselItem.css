@@ -16,3 +16,19 @@
 .carousel-item.active {
   opacity: 1;
 }
+
+@media screen and (max-width: 768px) {
+  .carousel-item {
+    width: 175%;
+    min-width: 50px;
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .carousel-item {
+    min-width: 50%;
+    padding: 0.5rem;
+    max-width: 300px;
+  }
+}

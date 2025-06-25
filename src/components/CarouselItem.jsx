@@ -28,7 +28,7 @@ const CarouselItem = ({ item, projects = [], index, currentIndex }) => {
         }`.trim()}
       >
         <Unit layout="flex" justifyContent="center" alignItems="center">
-          <Button onClick={toggle} variant="carousel">
+          <Button onClick={toggle} variant="carousel" intent="carousel">
             {item.title}
           </Button>
         </Unit>

@@ -46,6 +46,7 @@ export const CalendarPage = () => {
     unit: {
       colSpan: '1',
       rowSpan: '1',
+      justifyContent: 'center',
     },
   };
 
@@ -184,7 +185,11 @@ export const CalendarPage = () => {
             </Unit>
           }
         >
-          <Unit justifyContent="center" alignItems="center">
+          <Unit
+            justifyContent="center"
+            justifyItems="center"
+            alignItems="center"
+          >
             <MonthToggle date={date} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
