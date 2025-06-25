@@ -88,19 +88,21 @@ const ConsultationBookingForm = ({ date, time, isAvailable }) => {
       {isAvailable && <h3>{`${date.day}-0${date.month + 1}`}</h3>}
       {time ? (
         <form onSubmit={handleSubmit}>
-          <label>
-            Start Time:
+          <div>
+            <label>Start Time:</label>
             <input type="text" name="name" value={startTime || ''} readOnly />
-          </label>
+          </div>
 
-          <label>
-            End Time:
+          <div>
+            <label>End Time:</label>
             <input type="email" name="email" value={endTime || ''} readOnly />
-          </label>
-          <label>
-            Phone:
+          </div>
+
+          <div>
+            <label>Phone:</label>
             <input type="tel" name="phone" placeholder="optional" />
-          </label>
+          </div>
+
           <button
             type="submit"
             disabled={!isAvailable}
