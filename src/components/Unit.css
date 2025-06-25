@@ -41,6 +41,17 @@
   gap: 0.5rem;
 }
 
+.unit.dropdown-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'item-1'
+    'item-2'
+    'item-3'
+    'item-4';
+}
+
 .unit.gap-0 {
   gap: 0;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
@@ -6,6 +6,9 @@ import { Card } from '../components/Card';
 import Unit from '../components/Unit';
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
+import DropDown from '../components/DropDown/DropDown';
+import { useWindowSize } from '../hooks/useWindowSize';
+import { useLocation } from 'react-router-dom';
 
 const categories = [
   {
@@ -51,6 +54,18 @@ const categories = [
 ];
 
 export const ProjectsPage = () => {
+  const location = useLocation();
+  const currentLocation = location.pathname.slice(1);
+
+  const windowSize = useWindowSize();
+  const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
+
+  const [navDropDown, setNavDropDown] = useState(false);
+
+  const toggleNavMobile = () => {
+    setNavDropDown((prev) => !prev);
+  };
+
   const context = {
     section: {
       layout: 'grid',
@@ -63,8 +78,6 @@ export const ProjectsPage = () => {
     unit: {
       colSpan: '1',
       rowSpan: '1',
-      justifySelf: 'end',
-      background: 'bg-dark',
     },
   };
 
@@ -78,24 +91,36 @@ export const ProjectsPage = () => {
       background="bg-dark"
       context={context}
     >
-      <Section id="projects" background="bg-dark" padding="py-6" layout="grid">
+      <Section background="bg-dark" layout="grid">
         <Card
           title="Projects"
           subtitle="Modern UI for online retail and other use-cases"
           footer={
-            <Unit layout="flex" gap="sm">
-              <Link to="/">
-                <Button variant="primary">Home</Button>
-              </Link>
-              <Link to="/projects">
-                <Button variant="outline">View Projects</Button>
-              </Link>
-              <Link to="/calendar">
-                <Button variant="outline">Calendar</Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline">Contact Me</Button>
-              </Link>
+            <Unit layout={buttonLayout} gap="sm">
+              {windowSize.width >= 798 && (
+                <>
+                  <Link to="/">
+                    <Button variant="primary">Home</Button>
+                  </Link>
+                  <Link to="/projects">
+                    <Button variant="outline">View Projects</Button>
+                  </Link>
+                  <Link to="/calendar">
+                    <Button variant="outline">Calendar</Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button variant="outline">Contact Me</Button>
+                  </Link>
+                </>
+              )}
+
+              {windowSize.width <= 798 && (
+                <DropDown
+                  navDropDown={navDropDown}
+                  toggleNavMobile={toggleNavMobile}
+                  currentLocation={currentLocation}
+                ></DropDown>
+              )}
             </Unit>
           }
         >

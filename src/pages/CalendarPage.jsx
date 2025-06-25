@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { useWindowSize } from '../hooks/useWindowSize';
 import Section from '../components/Section';
 import { Card } from '../components/Card';
 import { Link } from 'react-router-dom';
+import DropDown from '../components/DropDown/DropDown';
+
 import Button from '../components/Button';
 import Unit from '../components/Unit';
 import Layout from '../components/Layout';
@@ -13,6 +17,12 @@ import MonthToggle from '../components/MonthToggle';
 
 export const CalendarPage = () => {
   const today = new Date();
+  const location = useLocation();
+
+  const currentLocation = location.pathname.slice(1);
+
+  const windowSize = useWindowSize();
+  const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
 
   // getMonth() returns 0-11, so we add 1
   const [date, setDate] = useState({
@@ -39,9 +49,6 @@ export const CalendarPage = () => {
     },
   };
 
-  const windowSize = useWindowSize();
-  console.log(windowSize);
-
   const selectDay = (day) => {
     setDate((prevDate) => {
       return {
@@ -55,12 +62,19 @@ export const CalendarPage = () => {
 
   const selectTime = (hour) => {
     setTimeselected((prevTime) => hour);
+    setNavDropDown((prev) => false);
     // display form to fill in details
     if (availableTimeslots.includes(hour)) {
       setIsAvailable((prev) => true);
     } else {
       setIsAvailable(() => false);
     }
+  };
+
+  const toggleNavMobile = () => {
+    setNavDropDown((prev) => !prev);
+    setTimeselected(null);
+    console.log(timeSelected);
   };
 
   const toggleMonth = (date) => {
@@ -73,10 +87,6 @@ export const CalendarPage = () => {
     });
 
     setTimeselected(() => null);
-  };
-
-  const toggleNavMobile = () => {
-    setNavDropDown((prev) => !prev);
   };
 
   useEffect(() => {
@@ -120,8 +130,6 @@ export const CalendarPage = () => {
     fetchAvailableHours();
   }, [date.day, date.month, date.year]);
 
-  console.log(date.day);
-
   return (
     <Layout
       layout="grid"
@@ -146,8 +154,8 @@ export const CalendarPage = () => {
           context="calendar"
           className="calendar-grid-item"
           footer={
-            <Unit layout="flex" gap="sm" className="button-group-flex">
-              {navDropDown && (
+            <Unit layout={buttonLayout} gap="sm" className="button-group-flex">
+              {windowSize.width >= 798 && (
                 <>
                   <Link to="/">
                     <Button variant="primary">Home</Button>
@@ -166,17 +174,17 @@ export const CalendarPage = () => {
                 </>
               )}
 
-              {
-                <Link to="/calendar">
-                  <Button variant="outline" onClick={toggleNavMobile}>
-                    Calendar
-                  </Button>
-                </Link>
-              }
+              {windowSize.width <= 798 && (
+                <DropDown
+                  navDropDown={navDropDown}
+                  toggleNavMobile={toggleNavMobile}
+                  currentLocation={currentLocation}
+                ></DropDown>
+              )}
             </Unit>
           }
         >
-          <Unit layout="flex" justifyContent="center" alignItems="center">
+          <Unit justifyContent="center" alignItems="center">
             <MonthToggle date={date} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>

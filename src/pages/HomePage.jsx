@@ -9,8 +9,24 @@ import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import LoginForm from '../components/AuthForm';
 import AuthFlow from '../components/AuthFlow';
+import DropDown from '../components/DropDown/DropDown';
+import { useWindowSize } from '../hooks/useWindowSize';
+import { useLocation } from 'react-router-dom';
 
 export const HomePage = () => {
+  const location = useLocation();
+
+  const currentLocation = 'home';
+
+  const windowSize = useWindowSize();
+  const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
+
+  const [navDropDown, setNavDropDown] = useState(false);
+
+  const toggleNavMobile = () => {
+    setNavDropDown((prev) => !prev);
+  };
+
   const context = {
     section: {
       layout: 'grid',
@@ -26,13 +42,6 @@ export const HomePage = () => {
       background: 'bg-dark',
     },
   };
-  // const [isLogin, setIsLogin] = useState(false);
-  // const [isSignup, setIsSignup] = useState(false);
-
-  // const toggleAuthState = (state) => {
-  //   setIsLogin((prevState) => !prevState);
-  //   setIsSignup((prevState) => !prevState);
-  // };
 
   return (
     <>
@@ -50,19 +59,31 @@ export const HomePage = () => {
             subtitle="Turnkey software builds for plug-and-play business solutions"
             className="py-6"
             footer={
-              <Unit layout="flex" gap="sm" justifyContent="left">
-                <Link to="/">
-                  <Button variant="primary">Home</Button>
-                </Link>
-                <Link to="/projects">
-                  <Button variant="outline">View Projects</Button>
-                </Link>
-                <Link to="/calendar">
-                  <Button variant="outline">Calendar</Button>
-                </Link>
-                <Link to="/contact">
-                  <Button variant="outline">Contact Me</Button>
-                </Link>
+              <Unit layout={buttonLayout} gap="sm" justifyContent="left">
+                {windowSize.width >= 798 && (
+                  <>
+                    <Link to="/">
+                      <Button variant="primary">Home</Button>
+                    </Link>
+                    <Link to="/projects">
+                      <Button variant="outline">View Projects</Button>
+                    </Link>
+                    <Link to="/calendar">
+                      <Button variant="outline">Calendar</Button>
+                    </Link>
+                    <Link to="/contact">
+                      <Button variant="outline">Contact Me</Button>
+                    </Link>
+                  </>
+                )}
+
+                {windowSize.width <= 798 && (
+                  <DropDown
+                    navDropDown={navDropDown}
+                    toggleNavMobile={toggleNavMobile}
+                    currentLocation={currentLocation}
+                  ></DropDown>
+                )}
               </Unit>
             }
           >

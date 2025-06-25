@@ -30,7 +30,7 @@ const Button = ({
       aria-label={ariaLabel}
       disabled={disabled}
       tabIndex={tabIndex}
-      className={`${baseStyles} ${variantStyles[variant]} intent-${intent} ${className}`.trim()}
+      className={`${baseStyles} ${variantStyles[variant]} intent-${intent} ${className} `.trim()}
     >
       {children}
     </button>

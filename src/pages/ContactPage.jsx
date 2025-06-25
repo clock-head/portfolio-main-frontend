@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Section from '../components/Section';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import { Card } from '../components/Card';
 import Layout from '../components/Layout';
 import Unit from '../components/Unit';
+import DropDown from '../components/DropDown/DropDown';
+import { useWindowSize } from '../hooks/useWindowSize';
+import { useLocation } from 'react-router-dom';
 
 export const ContactPage = () => {
+  const windowSize = useWindowSize();
+  const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
+  const [navDropDown, setNavDropDown] = useState(false);
+
+  const location = useLocation();
+
+  const currentLocation = location.pathname.slice(1);
+
+  const toggleNavMobile = () => {
+    setNavDropDown((prev) => !prev);
+  };
+
   const context = {
     section: {
       layout: 'grid',
@@ -38,19 +53,31 @@ export const ContactPage = () => {
           title="Contact Me"
           subtitle="Let’s work together"
           footer={
-            <Unit layout="flex" gap="sm">
-              <Link to="/">
-                <Button variant="primary">Home</Button>
-              </Link>
-              <Link to="/projects">
-                <Button variant="outline">View Projects</Button>
-              </Link>
-              <Link to="/calendar">
-                <Button variant="outline">Calendar</Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline">Contact Me</Button>
-              </Link>
+            <Unit layout={buttonLayout} gap="sm">
+              {windowSize.width >= 798 && (
+                <>
+                  <Link to="/">
+                    <Button variant="primary">Home</Button>
+                  </Link>
+                  <Link to="/projects">
+                    <Button variant="outline">View Projects</Button>
+                  </Link>
+                  <Link to="/calendar">
+                    <Button variant="outline">Calendar</Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button variant="outline">Contact Me</Button>
+                  </Link>
+                </>
+              )}
+
+              {windowSize.width <= 798 && (
+                <DropDown
+                  navDropDown={navDropDown}
+                  toggleNavMobile={toggleNavMobile}
+                  currentLocation={currentLocation}
+                ></DropDown>
+              )}
             </Unit>
           }
         >
