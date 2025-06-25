@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useWindowSize } from '../hooks/useWindowSize';
 import Section from '../components/Section';
 import { Card } from '../components/Card';
 import { Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ import MonthToggle from '../components/MonthToggle';
 
 export const CalendarPage = () => {
   const today = new Date();
-  console.log(today);
+
   // getMonth() returns 0-11, so we add 1
   const [date, setDate] = useState({
     day: null,
@@ -28,8 +29,6 @@ export const CalendarPage = () => {
       layout: 'grid',
       background: 'bg-dark',
       justifyItems: 'center',
-
-      // padding: 'py-6',
     },
 
     unit: {
@@ -37,6 +36,9 @@ export const CalendarPage = () => {
       rowSpan: '1',
     },
   };
+
+  const windowSize = useWindowSize();
+  console.log(windowSize);
 
   const selectDay = (day) => {
     setDate((prevDate) => {
@@ -124,7 +126,7 @@ export const CalendarPage = () => {
       context={context}
     >
       <Section layout="appointment-grid" padding="py-6">
-        {timeSelected && (
+        {windowSize.width > 798 && timeSelected && (
           <ConsultationBookingForm
             date={date}
             time={timeSelected}
@@ -158,6 +160,13 @@ export const CalendarPage = () => {
             <MonthToggle date={date} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
+          {windowSize.width <= 797 && timeSelected && (
+            <ConsultationBookingForm
+              date={date}
+              time={timeSelected}
+              isAvailable={isAvailable}
+            ></ConsultationBookingForm>
+          )}
         </Card>
         {date.day && (
           <TimeCarousel

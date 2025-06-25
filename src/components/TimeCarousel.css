@@ -73,7 +73,6 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding: 0.5rem 0;
-    margin-bottom: 10rem;
   }
 
   .time-carousel-track {
