@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useWindowSize } from '../hooks/useWindowSize';
+import { useFetchAvailableTimeslots } from '../hooks/useFetchAvailableTimeslots';
+
 import Section from '../components/Section';
 import { Card } from '../components/Card';
 import { Link } from 'react-router-dom';
@@ -34,8 +36,10 @@ export const CalendarPage = () => {
 
   const [timeSelected, setTimeselected] = useState(null);
   const [isAvailable, setIsAvailable] = useState(false);
-  const [availableTimeslots, setAvailableTimeslots] = useState([]);
   const [navDropDown, setNavDropDown] = useState(false);
+
+  const { availableTimeslots, loading, error } =
+    useFetchAvailableTimeslots(date);
 
   const context = {
     section: {
@@ -91,46 +95,46 @@ export const CalendarPage = () => {
     setTimeselected(() => null);
   };
 
-  useEffect(() => {
-    const fetchAvailableHours = async () => {
-      if (!date.day) return;
+  // useEffect(() => {
+  //   const fetchAvailableHours = async () => {
+  //     if (!date.day) return;
 
-      const monthString = (date.month + 1).toString().padStart(2, '0');
-      const dayString = date.day.toString().padStart(2, '0');
+  //     const monthString = (date.month + 1).toString().padStart(2, '0');
+  //     const dayString = date.day.toString().padStart(2, '0');
 
-      try {
-        const response = await fetch(
-          `${
-            import.meta.env.VITE_API_URL
-          }/api/consultation/available-timeslots?date=${
-            date.year
-          }-${monthString}-${dayString}?`,
-          {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
+  //     try {
+  //       const response = await fetch(
+  //         `${
+  //           import.meta.env.VITE_API_URL
+  //         }/api/consultation/available-timeslots?date=${
+  //           date.year
+  //         }-${monthString}-${dayString}?`,
+  //         {
+  //           method: 'GET',
+  //           credentials: 'include',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //         }
+  //       );
 
-        if (!response.ok) {
-          throw new Error(`Server error: ${response.status}`);
-        }
+  //       if (!response.ok) {
+  //         throw new Error(`Server error: ${response.status}`);
+  //       }
 
-        const data = await response.json();
-        // console.log('Available timeslots:', data);
-        setAvailableTimeslots((prev) => {
-          // console.log('Setting available timeslots:', data.availableTimeslots);
-          return data.availableTimeslots;
-        });
-      } catch (error) {
-        console.error('Error fetching available timeslots:', error);
-        setAvailableTimeslots([]);
-      }
-    };
-    fetchAvailableHours();
-  }, [date.day, date.month, date.year]);
+  //       const data = await response.json();
+  //       // console.log('Available timeslots:', data);
+  //       setAvailableTimeslots((prev) => {
+  //         // console.log('Setting available timeslots:', data.availableTimeslots);
+  //         return data.availableTimeslots;
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching available timeslots:', error);
+  //       setAvailableTimeslots([]);
+  //     }
+  //   };
+  //   fetchAvailableHours();
+  // }, [date.day, date.month, date.year]);
 
   return (
     <Layout

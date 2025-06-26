@@ -7,13 +7,9 @@ const ConsultationBookingForm = ({ date, time, isAvailable }) => {
 
   const hour = time.slice(0, 2);
   const minutes = time.slice(-2);
-  console.log('hour: ', hour);
-  console.log('minutes: ', minutes);
 
   const startTime = time;
-  console.log(startTime);
   const endTime = minutes === '30' ? `${parseInt(hour) + 1}:00` : `${hour}:30`;
-  console.log(endTime);
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -34,6 +30,8 @@ const ConsultationBookingForm = ({ date, time, isAvailable }) => {
 
         if (!response.ok) {
           throw new Error(`Server error: ${response.status}`);
+
+          // if 401 no session token found, redirect to homepage to login or sign up.
         }
 
         const data = await response.json();
