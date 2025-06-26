@@ -101,9 +101,10 @@
 }
 
 .intent-dropdown {
-  min-width: 280px;
+  min-width: 300px;
   padding: 20px 45px 20px;
   text-align: center;
+  margin: 0 auto;
 }
 
 /* .intent-carousel {

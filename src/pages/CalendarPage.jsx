@@ -23,7 +23,7 @@ export const CalendarPage = () => {
 
   const windowSize = useWindowSize();
   const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
-  const layoutPlacement = windowSize.width <= 440 ? 'start' : 'center';
+  const layoutPlacement = windowSize.width <= 440 ? '' : 'center';
 
   // getMonth() returns 0-11, so we add 1
   const [date, setDate] = useState({
