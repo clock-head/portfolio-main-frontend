@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    "strict": true,
+    "paths": {
+      "@athena": ["node_modules/athena-core/*"],
+      "@athenaRefs/*": ["node_modules/athena-core/dist/ref/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    // "module": "Node16",
+
+    "jsx": "react-jsx",
+    "lib": ["DOM", "ESNext"],
+    "types": ["vite/client", "vitest"],
+    "outDir": "dist",
+    "noEmit": false
+  },
+  "include": [
+    "src",
+    "vite-env.d.ts",
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.tsx",
+    "src/test/setup.ts",
+    "**/*.test.tsx"
+  ]
+}

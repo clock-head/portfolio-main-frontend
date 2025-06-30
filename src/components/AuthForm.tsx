@@ -1,0 +1,97 @@
+import React, { useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
+
+interface AuthFormProps {
+  mode: 'login' | 'signup';
+  toggleAuthState: () => void;
+}
+
+const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
+  const { login, signup, loading, user } = useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (mode === 'login') {
+      await login({ email, password });
+    } else {
+      await signup({ email, password, firstName, lastName });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="auth-form">
+      <h2>{mode === 'login' ? 'Login' : 'Sign Up'}</h2>
+
+      {mode === 'signup' && (
+        <>
+          <div>
+            <label>First Name:</label>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label>Last Name:</label>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+        </>
+      )}
+
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+
+      <button type="submit" disabled={loading}>
+        {loading
+          ? mode === 'login'
+            ? 'Logging in...'
+            : 'Signing up...'
+          : mode === 'login'
+          ? 'Login'
+          : 'Sign Up'}
+      </button>
+
+      <p>
+        {mode === 'login'
+          ? "Don't have an account?"
+          : 'Already have an account?'}{' '}
+        <button type="button" onClick={toggleAuthState} className="auth-toggle">
+          {mode === 'login' ? 'Sign up' : 'Log in'}
+        </button>
+      </p>
+    </form>
+  );
+};
+
+export default AuthForm;
