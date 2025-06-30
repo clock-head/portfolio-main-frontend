@@ -1,7 +1,7 @@
 .auth-form {
   max-width: 400px;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 1rem 2rem;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
@@ -27,6 +27,7 @@
 }
 
 .form-group input[type='text'],
+.form-group input[type='email'],
 .form-group input[type='password'] {
   width: 100%;
   padding: 0.2rem;
@@ -59,4 +60,8 @@
 .auth-form button[type='submit']:hover {
   background-color: #2edffa;
   color: #1f8a9a;
+}
+
+.auth-toggle {
+  padding: 1rem 4rem;
 }
