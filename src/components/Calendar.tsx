@@ -4,7 +4,7 @@ import Unit from './Unit';
 import './Calendar.css';
 import Day from './Day';
 import Modal from './Modal';
-import { useFetchAvailableDates } from 'src/hooks/useFetchAvailableDates';
+import { useFetchAvailableDates } from '../hooks/useFetchAvailableDates';
 
 interface CalendarProps {
   selectDay: (day: number) => void;

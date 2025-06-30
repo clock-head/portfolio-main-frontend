@@ -4,7 +4,16 @@ import Unit from './Unit';
 import Button from './Button';
 import './ProjectList.css';
 
-const ProjectList = ({ projects }) => {
+interface Project {
+  title: string;
+  // Add other fields here if needed
+}
+
+interface ProjectListProps {
+  projects: Project[];
+}
+
+const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   return (
     <div className="project-list">
       <Section
@@ -13,6 +22,11 @@ const ProjectList = ({ projects }) => {
         width="wide"
         background="bg-dark"
         justifyContent="center"
+        justifyItems=""
+        padding=""
+        id=""
+        alignContent=""
+        alignItems=""
       >
         {projects.map((project, idx) => (
           <Unit

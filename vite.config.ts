@@ -10,4 +10,10 @@ export default defineConfig({
 
     css: true,
   },
+  resolve: {
+    alias: {
+      'athena-core': '/athena-core/dist',
+      'athena-core/ref': '/athena-core/dist/ref',
+    },
+  },
 } satisfies UserConfig);

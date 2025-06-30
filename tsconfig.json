@@ -7,8 +7,8 @@
 
     "strict": true,
     "paths": {
-      "@athena": ["node_modules/athena-core/*"],
-      "@athenaRefs/*": ["node_modules/athena-core/dist/ref/*"]
+      "athena-core": ["athena-core/dist/athena-core"],
+      "athena-core/ref/*": ["athena-core/dist/ref/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -20,7 +20,7 @@
     "lib": ["DOM", "ESNext"],
     "types": ["vite/client", "vitest"],
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": true
   },
   "include": [
     "src",

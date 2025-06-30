@@ -15,7 +15,7 @@ import TimeCarousel from '../components/TimeCarousel';
 import ConsultationBookingForm from '../components/ConsultationBookingForm';
 import MonthToggle from '../components/MonthToggle';
 
-import { useBookingLogic } from 'src/hooks/useBookingLogic';
+import { useBookingLogic } from '../hooks/useBookingLogic';
 
 export const CalendarPage = () => {
   const today = new Date();

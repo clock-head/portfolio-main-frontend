@@ -1,11 +1,12 @@
 // Carousel.jsx
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
-import CarouselItem from './CarouselItem';
-import Unit from './Unit';
+import CarouselItem, { Project } from './CarouselItem';
 
 interface CarouselItemType {
-  projects?: unknown;
+  title: string;
+  subtitle: string;
+  projects?: Project[];
   [key: string]: any;
 }
 

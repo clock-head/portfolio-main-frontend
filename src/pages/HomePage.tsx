@@ -11,7 +11,7 @@ import LoginForm from '../components/AuthForm';
 import AuthFlow from '../components/AuthFlow';
 import DropDown from '../components/DropDown/DropDown';
 import { useWindowSize } from '../hooks/useWindowSize';
-import { useAuth } from 'src/hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 import { useLocation } from 'react-router-dom';
 
 export const HomePage = () => {

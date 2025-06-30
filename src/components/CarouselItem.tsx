@@ -5,8 +5,7 @@ import Button from './Button';
 import ProjectList from './ProjectList';
 import './CarouselItem.css';
 
-interface Project {
-  id: string;
+export interface Project {
   title: string;
 }
 

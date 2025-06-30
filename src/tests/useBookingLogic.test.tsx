@@ -6,7 +6,8 @@ import { useBookingLogic } from '../hooks/useBookingLogic';
 import { useEffect } from 'react';
 
 function TestComponent() {
-  const { date, selectDay, selectTime, time, isAvailable } = useBookingLogic();
+  const { date, selectDay, selectTime, time, timeslotIsAvailable } =
+    useBookingLogic();
 
   useEffect(() => {
     selectDay(7);
@@ -17,7 +18,7 @@ function TestComponent() {
     <>
       <div data-testid="day">{date.day}</div>
       <div data-testid="time">{time}</div>
-      <div data-testid="available">{isAvailable.toString()}</div>
+      <div data-testid="available">{timeslotIsAvailable.toString()}</div>
     </>
   );
 }

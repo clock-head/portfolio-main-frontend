@@ -11,7 +11,15 @@ const generateTimeSlots = () => {
   return slots;
 };
 
-const TimeCarousel = ({ selectTime, availableTimeslots }) => {
+interface TimeCarouselProps {
+  selectTime: (time: string) => void;
+  availableTimeslots: string[];
+}
+
+const TimeCarousel: React.FC<TimeCarouselProps> = ({
+  selectTime,
+  availableTimeslots,
+}) => {
   const slots = generateTimeSlots();
   // console.log('Available timeslots:', availableTimeslots);
 
