@@ -1,0 +1,30 @@
+{
+  "name": "@clock-head/athena-core",
+  "version": "0.1.0",
+  "description": "Core logic for Athena agent architecture",
+  "main": "dist/athena-core.js",
+  "types": "dist/athena-core.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/athena-core.js",
+      "require": "./dist/athena-core.js",
+      "types": "./dist/athena-core.d.ts"
+    },
+    "./ref/modalRef": {
+      "import": "./dist/ref/modalRef.js",
+      "types": "./dist/ref/modalRef.d.ts"
+    },
+    "./ref/navigateRef": {
+      "import": "./dist/ref/navigateRef.js",
+      "types": "./dist/ref/navigateRef.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "license": "MIT"
+}
