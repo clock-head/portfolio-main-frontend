@@ -7,7 +7,7 @@
 
     "strict": true,
     "paths": {
-      "athena-core": ["athena-core/dist/athena-core"],
+      "athena-core": ["athena-core/dist"],
       "athena-core/ref/*": ["athena-core/dist/ref/*"]
     },
     "resolveJsonModule": true,
