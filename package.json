@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "prebuild": "cd athena-core && tsc && cd ..",
+    "build": "npm run prebuild && npm run clean && tsc && vite build",
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && vite build",
-    "lint": "eslint .",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "dependencies": {
