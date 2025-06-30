@@ -31,7 +31,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
 
       {mode === 'signup' && (
         <>
-          <div>
+          <div className="form-group">
             <label>First Name:</label>
             <input
               type="text"
@@ -41,7 +41,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
             />
           </div>
 
-          <div>
+          <div className="form-group">
             <label>Last Name:</label>
             <input
               type="text"
@@ -53,7 +53,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
         </>
       )}
 
-      <div>
+      <div className="form-group">
         <label>Email:</label>
         <input
           type="email"
@@ -63,7 +63,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
         />
       </div>
 
-      <div>
+      <div className="form-group">
         <label>Password:</label>
         <input
           type="password"
