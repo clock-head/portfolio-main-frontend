@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
+import './AuthForm.css';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
