@@ -37,14 +37,16 @@ function App() {
   }, [navigate]);
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/projects" element={<ProjectsPage />} />
-      <Route path="/calendar" element={<CalendarPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/verify" element={<VerifyEmailPage />} />
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/verify" element={<VerifyEmailPage />} />
+      </Routes>
       <Modal ref={modalController}></Modal>
-    </Routes>
+    </>
   );
 }
 
