@@ -39,6 +39,7 @@
 }
 
 .form-group input[type='text']:focus,
+.form-group input[type='email'],
 .form-group input[type='password']:focus {
   outline: none;
   border-color: #2edffa;
