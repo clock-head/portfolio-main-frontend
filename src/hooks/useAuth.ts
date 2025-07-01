@@ -61,12 +61,18 @@ export const useAuth = () => {
 
       AthenaCore.redirect('/'); // this doesn't fire.
     } catch (error: any) {
-      AthenaCore.throwError({
-        status: 500,
-        message:
-          error instanceof Error
-            ? error.message
-            : 'Unexpected error during login.',
+      // AthenaCore.throwError({
+      //   status: 500,
+      //   message:
+      //     error instanceof Error
+      //       ? error.message
+      //       : 'Unexpected error during login.',
+      // });
+
+      AthenaCore.openModal({
+        title: 'Login Error',
+        message: error.message,
+        type: 'error',
       });
     } finally {
       setLoading(false);
