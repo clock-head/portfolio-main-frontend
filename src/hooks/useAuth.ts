@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AthenaCore } from 'athena-core';
 
 interface LoginCredentials {
@@ -55,7 +55,9 @@ export const useAuth = () => {
 
       setUser(data.user);
 
-      console.log(user); // this returns null
+      useEffect(() => {
+        console.log('User updated: ', user);
+      }, []);
 
       AthenaCore.redirect('/'); // this doesn't fire.
     } catch (error: any) {
