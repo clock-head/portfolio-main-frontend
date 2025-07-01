@@ -44,9 +44,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             },
           }
         );
+        const data = await response.json();
+
+        if (response.status === 401) {
+          AthenaCore.throwError({
+            status: data.status,
+            message: data.message,
+          });
+        }
 
         if (response.ok) {
-          const data = await response.json();
           setUser(data.user);
           setIsAuthenticated(true);
         } else {
