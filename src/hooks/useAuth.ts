@@ -52,6 +52,8 @@ export const useAuth = () => {
       }
 
       setUser(data.user);
+
+      AthenaCore.redirect('/');
     } catch (error: any) {
       AthenaCore.throwError({
         status: 500,

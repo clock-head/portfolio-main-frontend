@@ -11,7 +11,7 @@ import LoginForm from '../components/AuthForm';
 import AuthFlow from '../components/AuthFlow';
 import DropDown from '../components/DropDown/DropDown';
 import { useWindowSize } from '../hooks/useWindowSize';
-import { useAuth } from '../hooks/useAuth';
+import { useUserSession } from '../hooks/useUserSession';
 import { useLocation } from 'react-router-dom';
 import Dashboard from '../components/Dashboard';
 
@@ -20,7 +20,7 @@ export const HomePage = () => {
   const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
 
   const [navDropDown, setNavDropDown] = useState(false);
-  const { user } = useAuth();
+  const { user } = useUserSession(true);
 
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);
