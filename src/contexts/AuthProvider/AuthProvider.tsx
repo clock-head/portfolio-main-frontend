@@ -59,6 +59,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         } else {
           setUser(null);
           setIsAuthenticated(false);
+
+          if (response.status === 500) {
+            AthenaCore.throwError({
+              status: data.status,
+              message: data.message,
+            });
+          }
         }
       } catch (error) {
         console.warn('[AuthProvider] Session fetch failed', error);
