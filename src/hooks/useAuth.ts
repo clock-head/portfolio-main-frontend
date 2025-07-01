@@ -55,10 +55,6 @@ export const useAuth = () => {
 
       setUser(data.user);
 
-      // useEffect(() => {
-      //   console.log('User updated: ', user);
-      // }, [user]);
-
       AthenaCore.redirect('/'); // this doesn't fire.
     } catch (error: any) {
       // AthenaCore.throwError({

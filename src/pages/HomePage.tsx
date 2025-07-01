@@ -1,5 +1,5 @@
 // Homepage Composition (example)
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 import Unit from '../components/Unit';
@@ -21,6 +21,10 @@ export const HomePage = () => {
 
   const [navDropDown, setNavDropDown] = useState(false);
   const { user } = useAuth();
+
+  useEffect(() => {
+    console.log('User update', user);
+  }, [user]);
 
   console.log(user);
 
