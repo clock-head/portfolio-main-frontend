@@ -20,7 +20,7 @@ export const HomePage = () => {
   const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
 
   const [navDropDown, setNavDropDown] = useState(false);
-  const { user } = useUserSession(true);
+  const { user } = useUserSession(false);
 
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);
@@ -98,7 +98,7 @@ export const HomePage = () => {
             }
           >
             {!user && <AuthFlow />}
-            {user && <Dashboard loggedIn={true} />}
+            {user && <Dashboard user={user} />}
             {/* <p>
               This site is a showcase of modular design, built for speed and
               clarity.

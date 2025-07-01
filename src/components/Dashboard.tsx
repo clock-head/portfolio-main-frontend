@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useUserSession } from '../hooks/useUserSession';
 import { useConsultation } from '../hooks/useConsultation';
+import { User } from '../hooks/useAuth';
 import Section from './Section';
 import './Dashboard.css';
 
 interface DashboardProps {
-  loggedIn: boolean;
+  user: User;
 }
 
-const Dashboard = ({ loggedIn }: DashboardProps) => {
-  const { user, loading } = useUserSession(loggedIn);
-  const { fetchConsultation, consultation } = useConsultation();
+const Dashboard = ({ user }: DashboardProps) => {
+  const { fetchConsultation, consultation, loading } = useConsultation();
 
   useEffect(() => {
     const fetchUserConsultation = async () => {
