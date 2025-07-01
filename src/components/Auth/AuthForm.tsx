@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
 import './AuthForm.css';
+import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
@@ -8,7 +8,7 @@ interface AuthFormProps {
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
-  const { login, signup, loading, user } = useAuth();
+  const { login, signup, logout, loading, user } = useAuth();
 
   console.log(user);
 

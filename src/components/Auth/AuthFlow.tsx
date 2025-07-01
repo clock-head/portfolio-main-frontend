@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Button from './Button';
+import Button from '../Button';
+import AuthErrorBoundary from './AuthErrorBoundary';
 import AuthForm from './AuthForm';
-import Section from './Section';
-import Unit from './Unit';
+import Section from '../Section';
+import Unit from '../Unit';
 
 const AuthFlow: React.FC = () => {
   const [mode, setMode] = useState<string | null>(null);
@@ -66,7 +67,9 @@ const AuthFlow: React.FC = () => {
           background=""
           padding=""
         >
-          <AuthForm mode={mode} toggleAuthState={toggleAuthState} />
+          <AuthErrorBoundary>
+            <AuthForm mode={mode} toggleAuthState={toggleAuthState} />
+          </AuthErrorBoundary>
         </Section>
       )}
     </>

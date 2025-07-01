@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AthenaCore } from 'athena-core';
-import { User } from './useAuth';
+import { User } from '../types/Auth';
 
 // Booking details for create function
 interface BookingDetails {

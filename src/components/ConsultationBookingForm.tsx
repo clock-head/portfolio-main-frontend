@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ConsultationBookingForm.css';
-import { useUserSession } from '../hooks/useUserSession';
 import { useConsultation } from '../hooks/useConsultation';
+import { useAuth } from '../contexts/AuthProvider/AuthProvider';
 import { DateInput } from 'src/types/DateInput';
 import Button from './Button';
+import { AthenaCore } from 'athena-core';
 
 interface ConsultationBookingFormProps {
   date: DateInput;
@@ -40,14 +41,23 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { user } = useUserSession(timeslotIsAvailable);
+    const { isAuthenticated } = useAuth();
 
-    bookConsultation({
-      startTime,
-      endTime,
-      timeZone,
-      phone,
-    });
+    if (isAuthenticated) {
+      bookConsultation({
+        startTime,
+        endTime,
+        timeZone,
+        phone,
+      });
+    } else {
+      AthenaCore.openModal({
+        title: 'Login Required',
+        message: 'please login to book a consultation.',
+      });
+
+      AthenaCore.redirect('/');
+    }
   };
 
   return (

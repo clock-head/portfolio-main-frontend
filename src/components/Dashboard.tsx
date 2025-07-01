@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { useUserSession } from '../hooks/useUserSession';
 import { useConsultation } from '../hooks/useConsultation';
-import { User } from '../hooks/useAuth';
+import { User } from '../types/Auth';
 import Section from './Section';
 import './Dashboard.css';
 

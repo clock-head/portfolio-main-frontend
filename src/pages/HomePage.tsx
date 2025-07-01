@@ -3,16 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 import Unit from '../components/Unit';
-import { LayoutProvider } from '../contexts/layout/LayoutProvider';
 import { Card } from '../components/Card';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import LoginForm from '../components/AuthForm';
-import AuthFlow from '../components/AuthFlow';
+import AuthFlow from '../components/Auth/AuthFlow';
 import DropDown from '../components/DropDown/DropDown';
 import { useWindowSize } from '../hooks/useWindowSize';
-import { useAuth } from '../hooks/useAuth';
-import { useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthProvider/AuthProvider';
 import Dashboard from '../components/Dashboard';
 
 export const HomePage = () => {
@@ -20,13 +17,7 @@ export const HomePage = () => {
   const buttonLayout = windowSize.width <= 798 ? 'dropdown-grid' : 'flex';
 
   const [navDropDown, setNavDropDown] = useState(false);
-  const { user } = useAuth();
-
-  useEffect(() => {
-    console.log('User update', user);
-  }, [user]);
-
-  console.log(user);
+  const { user, loading, login, logout, isAuthenticated } = useAuth();
 
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);
