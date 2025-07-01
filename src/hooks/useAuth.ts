@@ -45,18 +45,19 @@ export const useAuth = () => {
 
       if (!response.ok) {
         console.log('response not ok.');
-        const data = await response.json();
         AthenaCore.throwError({
           status: response.status,
           message: data?.message || 'Login failed',
         });
       }
 
+      console.log(response.ok);
+
       setUser(data.user);
 
-      console.log(user);
+      console.log(user); // this returns null
 
-      AthenaCore.redirect('/');
+      AthenaCore.redirect('/'); // this doesn't fire.
     } catch (error: any) {
       AthenaCore.throwError({
         status: 500,
