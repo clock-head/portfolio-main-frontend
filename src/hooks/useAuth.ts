@@ -57,7 +57,7 @@ export const useAuth = () => {
 
       console.log(user); // this returns null
 
-      AthenaCore.redirect('/'); // this doesn't fire.
+      AthenaCore.redirect('/projects'); // this doesn't fire.
     } catch (error: any) {
       AthenaCore.throwError({
         status: 500,
