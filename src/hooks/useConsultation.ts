@@ -38,16 +38,22 @@ export const useConsultation = (): UseBookConsultationResult => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/consultation/`,
+        `${import.meta.env.VITE_API_URL}/api/consultation/my-consultation`,
         {
           method: 'GET',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(user),
         }
       );
 
       const data = await response.json();
+
+      if (response.status === 404) {
+        AthenaCore.openModal({
+          title: 'No Consultation Booked',
+          message: 'No active booking in our records.',
+        });
+      }
 
       if (!response.ok) {
         AthenaCore.throwError({
@@ -63,6 +69,7 @@ export const useConsultation = (): UseBookConsultationResult => {
         message:
           error instanceof Error ? error.message : 'Internal Server Error.',
       });
+      setLoading(false);
     }
   };
 
