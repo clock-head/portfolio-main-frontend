@@ -11,7 +11,7 @@ interface SignupCredentials extends LoginCredentials {
   lastName: string;
 }
 
-interface User {
+export interface User {
   id: string;
   email: string;
   firstName: string;

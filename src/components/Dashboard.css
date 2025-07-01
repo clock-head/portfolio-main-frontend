@@ -1,0 +1,16 @@
+.consultation-container {
+  width: 80%;
+}
+
+.user-details {
+  color: #1f8a9a;
+}
+
+.consultation-details {
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+.consultation-details p {
+  color: #1f8a9a;
+}

@@ -57,6 +57,10 @@ export const CalendarPage = () => {
     selectTime(null);
   };
 
+  const handleCloseForm = () => {
+    selectTime(null);
+  };
+
   return (
     <Layout
       layout="grid"
@@ -83,6 +87,7 @@ export const CalendarPage = () => {
             date={date}
             time={time}
             timeslotIsAvailable={timeslotIsAvailable}
+            handleCloseForm={handleCloseForm}
           ></ConsultationBookingForm>
         )}
 
@@ -130,6 +135,7 @@ export const CalendarPage = () => {
               date={date}
               time={time}
               timeslotIsAvailable={timeslotIsAvailable}
+              handleCloseForm={handleCloseForm}
             ></ConsultationBookingForm> // use a modal instead.
           )}
         </Card>

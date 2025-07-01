@@ -14,7 +14,9 @@ const DropDown: React.FC<DropDownProps> = ({
   const currentLocation = useLocation();
   const loc =
     currentLocation.pathname === '/' ? 'home' : currentLocation.pathname;
-  const location = loc.charAt(0).toUpperCase() + loc.slice(1);
+
+  const currentLoc = loc === 'home' ? 'home' : loc.slice(1);
+  const location = currentLoc.charAt(0).toUpperCase() + currentLoc.slice(1);
 
   return (
     <>

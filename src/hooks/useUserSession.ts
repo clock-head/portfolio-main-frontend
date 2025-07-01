@@ -33,21 +33,6 @@ export const useUserSession = (shouldEnforceSession = true) => {
           }
         );
 
-        // if (response.status !== 401) {
-        //   AthenaCore.throwError({
-        //     status: 401,
-        //     message: 'Please sign in to book a consultation.',
-        //   });
-
-        //   AthenaCore.redirect('/');
-
-        //   AthenaCore.openModal({
-        //     title: 'Authentication Error',
-        //     message: 'please sign in to book a consultation.',
-        //     type: 'error',
-        //   });
-        // }
-
         if (!response.ok) {
           AthenaCore.throwError({
             status: response.status,

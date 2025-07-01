@@ -13,6 +13,7 @@ import DropDown from '../components/DropDown/DropDown';
 import { useWindowSize } from '../hooks/useWindowSize';
 import { useAuth } from '../hooks/useAuth';
 import { useLocation } from 'react-router-dom';
+import Dashboard from '../components/Dashboard';
 
 export const HomePage = () => {
   const windowSize = useWindowSize();
@@ -97,6 +98,7 @@ export const HomePage = () => {
             }
           >
             {!user && <AuthFlow />}
+            {user && <Dashboard loggedIn={true} />}
             {/* <p>
               This site is a showcase of modular design, built for speed and
               clarity.

@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './ConsultationBookingForm.css';
 import { useUserSession } from '../hooks/useUserSession';
-import { useBookConsultation } from '../hooks/useBookConsultation';
+import { useConsultation } from '../hooks/useConsultation';
 import { DateInput } from 'src/types/DateInput';
+import Button from './Button';
 
 interface ConsultationBookingFormProps {
   date: DateInput;
   time: string;
   timeslotIsAvailable: boolean;
+  handleCloseForm: () => void;
 }
 
 const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   date,
   time,
   timeslotIsAvailable,
+  handleCloseForm,
 }) => {
   // const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
 
-  const { bookConsultation, loading } = useBookConsultation();
+  const { bookConsultation, loading } = useConsultation();
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -48,45 +51,50 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   };
 
   return (
-    <div className="booking-form">
-      {!timeslotIsAvailable && (
-        <h3 className="not-available">{'Not Available'}</h3>
-      )}
-      {timeslotIsAvailable && <h3>{`${date.day}-0${date.month + 1}`}</h3>}
-      {time ? (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Start Time:</label>
-            <input type="text" name="start-time" value={startTime} readOnly />
-          </div>
+    <div className="form-overlay">
+      <div className="booking-form">
+        {!timeslotIsAvailable && (
+          <h3 className="not-available">{'Not Available'}</h3>
+        )}
+        <Button variant="outline" onClick={handleCloseForm}>
+          X
+        </Button>
+        {timeslotIsAvailable && <h3>{`${date.day}-0${date.month + 1}`}</h3>}
+        {time ? (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Start Time:</label>
+              <input type="text" name="start-time" value={startTime} readOnly />
+            </div>
 
-          <div>
-            <label>End Time:</label>
-            <input type="text" name="end-time" value={endTime} readOnly />
-          </div>
+            <div>
+              <label>End Time:</label>
+              <input type="text" name="end-time" value={endTime} readOnly />
+            </div>
 
-          <div>
-            <label>Phone:</label>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="optional"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </div>
+            <div>
+              <label>Phone:</label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="optional"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
 
-          <button
-            type="submit"
-            disabled={!timeslotIsAvailable}
-            className={!timeslotIsAvailable ? 'not-available' : ''}
-          >
-            Book Consultation
-          </button>
-        </form>
-      ) : (
-        <p>This time slot is not available.</p>
-      )}
+            <button
+              type="submit"
+              disabled={!timeslotIsAvailable}
+              className={!timeslotIsAvailable ? 'not-available' : ''}
+            >
+              Book Consultation
+            </button>
+          </form>
+        ) : (
+          <p>This time slot is not available.</p>
+        )}
+      </div>
     </div>
   );
 };
