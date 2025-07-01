@@ -12,7 +12,7 @@ interface SignupCredentials extends LoginCredentials {
 }
 
 export interface User {
-  id: string;
+  user_id: string;
   email: string;
   firstName: string;
   lastName: string;
