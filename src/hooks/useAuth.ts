@@ -44,6 +44,7 @@ export const useAuth = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        console.log('response not ok.');
         const data = await response.json();
         AthenaCore.throwError({
           status: response.status,
