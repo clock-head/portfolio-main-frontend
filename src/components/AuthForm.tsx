@@ -10,6 +10,8 @@ interface AuthFormProps {
 const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
   const { login, signup, loading, user } = useAuth();
 
+  console.log(user);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
