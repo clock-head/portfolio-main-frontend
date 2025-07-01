@@ -22,6 +22,8 @@ export const HomePage = () => {
   const [navDropDown, setNavDropDown] = useState(false);
   const { user } = useAuth();
 
+  console.log(user);
+
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);
   };
