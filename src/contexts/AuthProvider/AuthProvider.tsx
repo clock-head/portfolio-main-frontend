@@ -175,7 +175,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           error instanceof Error ? error.message : 'Unexpected Sign Up error.',
       });
     } finally {
-      AthenaCore.redirect('/');
+      AthenaCore.redirect('/verify');
     }
   };
 
