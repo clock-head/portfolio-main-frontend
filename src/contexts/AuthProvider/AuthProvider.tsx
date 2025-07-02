@@ -150,6 +150,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         });
         setUser(data.user);
         setIsAuthenticated(true);
+        AthenaCore.redirect('/');
       } else {
         setUser(null);
         setIsAuthenticated(false);
