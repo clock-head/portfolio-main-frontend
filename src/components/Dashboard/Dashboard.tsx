@@ -4,6 +4,8 @@ import ConsultationDetails from './ConsultationDetails';
 import { User } from '../../types/Auth';
 import Section from '../Section';
 import './Dashboard.css';
+import Button from '../Button';
+import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
 
 interface DashboardProps {
   user: User;
@@ -11,6 +13,7 @@ interface DashboardProps {
 
 const Dashboard = ({ user }: DashboardProps) => {
   const { fetchConsultation, consultation, loading } = useConsultation();
+  const { logout } = useAuth();
 
   useEffect(() => {
     const fetchUserConsultation = async () => {
@@ -39,6 +42,9 @@ const Dashboard = ({ user }: DashboardProps) => {
         {loading && <div>... loading</div>}
         <h3 className="user-details">{`Welcome ${user?.firstName} ${user?.lastName}`}</h3>
         <ConsultationDetails consultation={consultation}></ConsultationDetails>
+        <Button variant="outline" onClick={logout}>
+          Log out
+        </Button>
       </div>
     </Section>
   );
