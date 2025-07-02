@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ConsultationBookingForm.css';
 import { useConsultation } from '../hooks/useConsultation';
 import { useAuth } from '../contexts/AuthProvider/AuthProvider';
-import { DateInput } from 'src/types/DateInput';
+import { DateInput, DateInputDaySelectedState } from 'src/types/DateInput';
 import Button from './Button';
 import { AthenaCore } from 'athena-core';
 
@@ -21,8 +21,7 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
 }) => {
   // const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-
-  const { bookConsultation, loading } = useConsultation();
+  const { bookConsultation } = useConsultation();
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -31,6 +30,10 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
 
   const startTime = time;
   const endTime = minutes === '30' ? `${parseInt(hour) + 1}:00` : `${hour}:30`;
+
+  const day = date.day ? date.day : undefined;
+
+  const selectedDate = new Date(date.year, date.month, day);
 
   // useEffect(() => {
   //   if (user) {
@@ -45,6 +48,7 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
 
     if (isAuthenticated) {
       bookConsultation({
+        selectedDate,
         startTime,
         endTime,
         timeZone,

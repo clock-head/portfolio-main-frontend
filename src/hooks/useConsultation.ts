@@ -4,6 +4,7 @@ import { User } from '../types/Auth';
 
 // Booking details for create function
 interface BookingDetails {
+  selectedDate: Date;
   startTime: string;
   endTime: string;
   timeZone: string;
@@ -48,14 +49,14 @@ export const useConsultation = (): UseBookConsultationResult => {
 
       const data = await response.json();
 
-      if (response.status === 404) {
-        AthenaCore.openModal({
-          title: 'No Consultation Booked',
-          message: 'No active booking in our records.',
-        });
-      }
-
       if (!response.ok) {
+        if (response.status === 404) {
+          AthenaCore.openModal({
+            title: 'No Consultation Booked',
+            message: 'No active booking in our records.',
+          });
+        }
+
         AthenaCore.throwError({
           status: response.status,
           message: data?.message || 'failed to retrieve booking consultation',
@@ -64,12 +65,12 @@ export const useConsultation = (): UseBookConsultationResult => {
 
       setConsultation(data.consultation);
     } catch (error: unknown) {
+      setLoading(false);
       AthenaCore.throwError({
         status: 500,
         message:
           error instanceof Error ? error.message : 'Internal Server Error.',
       });
-      setLoading(false);
     }
   };
 

@@ -50,6 +50,8 @@ const Dashboard = ({ user }: DashboardProps) => {
             </p>
           </div>
         )}
+
+        {}
       </div>
     </Section>
   );

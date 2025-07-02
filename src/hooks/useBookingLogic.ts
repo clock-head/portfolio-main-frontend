@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFetchAvailableTimeslots } from './useFetchAvailableTimeslots';
 
-import { DateInput } from 'src/types/DateInput';
+import { DateInput, DateInputDaySelectedState } from 'src/types/DateInput';
 
 export const useBookingLogic = () => {
   const today = new Date();
@@ -51,7 +51,6 @@ export const useBookingLogic = () => {
     loading,
     error,
     availableTimeslots,
-    setDate,
     selectDay,
     selectTime,
     toggleMonth,

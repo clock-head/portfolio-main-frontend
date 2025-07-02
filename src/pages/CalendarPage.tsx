@@ -82,7 +82,7 @@ export const CalendarPage = () => {
         width=""
         padding="py-6"
       >
-        {windowSize.width > 798 && time && (
+        {windowSize.width > 798 && time && date.day && (
           <ConsultationBookingForm
             date={date}
             time={time}
@@ -130,7 +130,7 @@ export const CalendarPage = () => {
             <MonthToggle date={date} onChange={toggleMonth}></MonthToggle>
             <Calendar selectDay={selectDay} date={date} />
           </Unit>
-          {windowSize.width <= 797 && time && (
+          {windowSize.width <= 797 && time && date.day && (
             <ConsultationBookingForm
               date={date}
               time={time}

@@ -46,19 +46,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         );
         const data = await response.json();
 
-        if (response.status === 401) {
-          AthenaCore.throwError({
-            status: data.status,
-            message: data.message,
-          });
-        }
-
         if (response.ok) {
           setUser(data.user);
           setIsAuthenticated(true);
         } else {
           setUser(null);
           setIsAuthenticated(false);
+
+          if (response.status === 401) {
+            AthenaCore.throwError({
+              status: data.status,
+              message: data.message,
+            });
+          }
 
           if (response.status === 500) {
             AthenaCore.throwError({
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             });
           }
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.warn('[AuthProvider] Session fetch failed', error);
         setUser(null);
         setIsAuthenticated(false);
@@ -125,8 +125,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       );
 
       const data = await response.json();
+      const user = response.ok ? data.user : null;
 
-      if (!response.ok) {
+      if (response.ok) {
+        AthenaCore.openModal({
+          title: 'Sign up Success',
+          message: `thank you for signing up with us, ${user.firstName}`,
+        });
+        setUser(data.user);
+        setIsAuthenticated(true);
+      } else {
+        setUser(null);
+        setIsAuthenticated(false);
         AthenaCore.throwError({
           status: response.status,
           message: data?.message || 'Sign Up failed.',
@@ -140,6 +150,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       });
     } finally {
       setUser(null);
+      setIsAuthenticated(false);
       AthenaCore.redirect('/');
     }
   };
