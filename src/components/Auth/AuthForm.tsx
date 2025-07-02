@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AuthForm.css';
 import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
+import { AthenaCore } from 'athena-core';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
@@ -32,9 +33,20 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
     if (mode === 'login') {
       await login({ email, password });
     } else {
-      await signup({ email, password, firstName, lastName });
+      if (isStrongPassword) {
+        await signup({ email, password, firstName, lastName });
+      } else {
+        AthenaCore.openModal({
+          title: 'Error',
+          message: 'please use strong password',
+          type: 'error',
+        });
+      }
     }
   };
+
+  const showWeakPasswordPrompt =
+    !isStrongPassword && password.length >= 4 ? true : false;
 
   return (
     <form onSubmit={handleSubmit} className="auth-form">
@@ -82,9 +94,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        {!isStrongPassword && (
-          <p>password must contain letters, numbers and symbols</p>
-        )}
+
+        <p
+          className={`weak-password-prompt ${
+            showWeakPasswordPrompt ? 'show' : ''
+          }`}
+        >
+          password must contain letters, numbers and capitals
+        </p>
       </div>
 
       <button type="submit" disabled={loading}>

@@ -6,9 +6,7 @@ interface ConsultationDetailsProps {
   consultation: ConsultationDetails | null;
 }
 
-const ConsultationDetails: React.FC<ConsultationDetailsProps> = ({
-  consultation,
-}) => {
+const Consultation: React.FC<ConsultationDetailsProps> = ({ consultation }) => {
   return (
     <>
       {consultation && (
@@ -28,4 +26,4 @@ const ConsultationDetails: React.FC<ConsultationDetailsProps> = ({
   );
 };
 
-export default ConsultationDetails;
+export default Consultation;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useConsultation } from '../../hooks/useConsultation';
-import ConsultationDetails from './ConsultationDetails';
+import Consultation from './ConsultationDetails';
 import { User } from '../../types/Auth';
 import Section from '../Section';
 import './Dashboard.css';
@@ -41,7 +41,7 @@ const Dashboard = ({ user }: DashboardProps) => {
       <div className="consultation-container">
         {loading && <div>... loading</div>}
         <h3 className="user-details">{`Welcome ${user?.firstName} ${user?.lastName}`}</h3>
-        <ConsultationDetails consultation={consultation}></ConsultationDetails>
+        <Consultation consultation={consultation}></Consultation>
         <Button variant="outline" onClick={logout}>
           Log out
         </Button>

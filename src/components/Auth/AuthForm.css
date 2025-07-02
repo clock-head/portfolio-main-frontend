@@ -39,7 +39,7 @@
 }
 
 .form-group input[type='text']:focus,
-.form-group input[type='email'],
+.form-group input[type='email']:focus,
 .form-group input[type='password']:focus {
   outline: none;
   border-color: #2edffa;
@@ -65,4 +65,13 @@
 
 .auth-toggle {
   padding: 0.5rem 4rem;
+}
+
+.weak-password-prompt {
+  font-size: 0.7rem;
+  color: rgba(183, 21, 21, 0);
+}
+
+.weak-password-prompt.show {
+  color: rgb(232, 68, 68);
 }
