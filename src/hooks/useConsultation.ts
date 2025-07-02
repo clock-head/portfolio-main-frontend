@@ -12,7 +12,7 @@ interface BookingDetails {
 }
 
 // Consultation details for get function to retrieve consultation.
-interface ConsultationDetails {
+export interface ConsultationDetails {
   consultationId: number;
   startTime: string;
   endTime: string;
@@ -50,13 +50,6 @@ export const useConsultation = (): UseBookConsultationResult => {
       const data = await response.json();
 
       if (!response.ok) {
-        if (response.status === 404) {
-          AthenaCore.openModal({
-            title: 'No Consultation Booked',
-            message: 'No active booking in our records.',
-          });
-        }
-
         AthenaCore.throwError({
           status: response.status,
           message: data?.message || 'failed to retrieve booking consultation',

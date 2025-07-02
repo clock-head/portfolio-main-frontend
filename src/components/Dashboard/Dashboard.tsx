@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { useConsultation } from '../hooks/useConsultation';
-import { User } from '../types/Auth';
-import Section from './Section';
+import { useConsultation } from '../../hooks/useConsultation';
+import ConsultationDetails from './ConsultationDetails';
+import { User } from '../../types/Auth';
+import Section from '../Section';
 import './Dashboard.css';
 
 interface DashboardProps {
@@ -37,21 +38,7 @@ const Dashboard = ({ user }: DashboardProps) => {
       <div className="consultation-container">
         {loading && <div>... loading</div>}
         <h3 className="user-details">{`Welcome ${user?.firstName} ${user?.lastName}`}</h3>
-
-        {consultation && (
-          <div className="consultation-details">
-            <p>{`Selected Date: ${consultation.selectedDate}`}</p>
-            <p>
-              {`Start Time: ${consultation.startTime}` ||
-                'Start time Unavailable'}
-            </p>
-            <p>
-              {`End Time: ${consultation.endTime}` || 'End time Unavailable'}
-            </p>
-          </div>
-        )}
-
-        {}
+        <ConsultationDetails consultation={consultation}></ConsultationDetails>
       </div>
     </Section>
   );

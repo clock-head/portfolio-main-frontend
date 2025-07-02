@@ -10,7 +10,7 @@ import AuthFlow from '../components/Auth/AuthFlow';
 import DropDown from '../components/DropDown/DropDown';
 import { useWindowSize } from '../hooks/useWindowSize';
 import { useAuth } from '../contexts/AuthProvider/AuthProvider';
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../components/Dashboard/Dashboard';
 
 export const HomePage = () => {
   const windowSize = useWindowSize();
