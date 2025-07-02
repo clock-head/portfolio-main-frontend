@@ -46,7 +46,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
   };
 
   const showWeakPasswordPrompt =
-    !isStrongPassword && password.length >= 4 ? true : false;
+    !isStrongPassword && password.length >= 7 ? true : false;
 
   return (
     <form onSubmit={handleSubmit} className="auth-form">
@@ -100,7 +100,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
             showWeakPasswordPrompt ? 'show' : ''
           }`}
         >
-          password must contain letters, numbers and capitals
+          password must contain a minimum of 12 letters, numbers and capitals
         </p>
       </div>
 
