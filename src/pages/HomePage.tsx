@@ -18,8 +18,17 @@ export const HomePage = () => {
 
   const [navDropDown, setNavDropDown] = useState(false);
   const { user, loading, login, logout, isAuthenticated } = useAuth();
+  const [showDashboard, setShowDashboard] = useState<boolean>(false);
 
   console.log(user);
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const refreshToDashboard = async (): Promise<void> => {
+      setShowDashboard(true);
+    };
+    refreshToDashboard();
+  }, [isAuthenticated]);
 
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);
@@ -96,8 +105,8 @@ export const HomePage = () => {
               </Unit>
             }
           >
-            {!user && <AuthFlow />}
-            {user && <Dashboard user={user} />}
+            {!isAuthenticated && <AuthFlow />}
+            {showDashboard && user && <Dashboard user={user} />}
             {/* <p>
               This site is a showcase of modular design, built for speed and
               clarity.
