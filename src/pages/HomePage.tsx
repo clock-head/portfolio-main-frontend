@@ -12,6 +12,7 @@ import { useWindowSize } from '../hooks/useWindowSize';
 import { useAuth } from '../contexts/AuthProvider/AuthProvider';
 import Dashboard from '../components/Dashboard/Dashboard';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { AthenaCore } from 'athena-core';
 
 export const HomePage = () => {
   const windowSize = useWindowSize();
@@ -19,20 +20,6 @@ export const HomePage = () => {
 
   const [navDropDown, setNavDropDown] = useState(false);
   const { user, loading, login, logout, isAuthenticated } = useAuth();
-  const [showDashboard, setShowDashboard] = useState<boolean>(false);
-
-  console.log('user: ', user);
-  console.log('is authenticated: ', isAuthenticated);
-
-  useEffect(() => {
-    if (loading) return;
-    if (!loading) {
-      const refreshToDashboard = async (): Promise<void> => {
-        setShowDashboard(true);
-      };
-      refreshToDashboard();
-    }
-  }, [isAuthenticated, loading]);
 
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);

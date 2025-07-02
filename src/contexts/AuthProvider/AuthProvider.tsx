@@ -150,10 +150,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           message: `thank you for signing up with us, ${user.firstName}`,
         });
         setUser(data.user);
-        console.log(user);
         setIsAuthenticated(true);
         setLoading(false);
-        AthenaCore.redirect('/');
       } else {
         setUser(null);
         setIsAuthenticated(false);
@@ -177,8 +175,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           error instanceof Error ? error.message : 'Unexpected Sign Up error.',
       });
     } finally {
-      setUser(null);
-      setIsAuthenticated(false);
       AthenaCore.redirect('/');
     }
   };
