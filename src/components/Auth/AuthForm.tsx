@@ -21,7 +21,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
 
   useEffect(() => {
     const passwordIsStrong = (): boolean => {
-      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{12,}$/;
       return regex.test(password);
     };
     setIsStrongPassword(passwordIsStrong());
@@ -46,7 +46,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
   };
 
   const showWeakPasswordPrompt =
-    !isStrongPassword && password.length >= 7 ? true : false;
+    !isStrongPassword && password.length <= 11 && password.length > 7
+      ? true
+      : false;
 
   return (
     <form onSubmit={handleSubmit} className="auth-form">
