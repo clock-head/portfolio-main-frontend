@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AuthForm.css';
 import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -14,8 +14,17 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isStrongPassword, setIsStrongPassword] = useState<boolean>(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+
+  useEffect(() => {
+    const passwordIsStrong = (): boolean => {
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+      return regex.test(password);
+    };
+    setIsStrongPassword(passwordIsStrong());
+  }, [password]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,6 +82,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {!isStrongPassword && (
+          <p>password must contain letters, numbers and symbols</p>
+        )}
       </div>
 
       <button type="submit" disabled={loading}>
