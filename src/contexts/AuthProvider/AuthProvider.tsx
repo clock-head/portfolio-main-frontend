@@ -137,6 +137,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       } else {
         setUser(null);
         setIsAuthenticated(false);
+
+        if (response.status === 409) {
+          AthenaCore.openModal({
+            title: 'Error',
+            message: 'Email already in use.',
+            type: 'error',
+          });
+        }
         AthenaCore.throwError({
           status: response.status,
           message: data?.message || 'Sign Up failed.',
