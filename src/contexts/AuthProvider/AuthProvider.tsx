@@ -94,6 +94,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const data = await response.json();
 
       if (!response.ok) {
+        if (response.status === 403) {
+          AthenaCore.openModal({
+            title: 'Verification Error',
+            message: 'Email not verified',
+            type: 'error',
+          });
+        }
+
+        if (response.status === 401) {
+          AthenaCore.openModal({
+            title: 'Authentication Error',
+            message: 'Password supplied is incorrect.',
+            type: 'error',
+          });
+        }
+
         AthenaCore.throwError({
           status: response.status,
           message: data?.message || 'Login failed',
