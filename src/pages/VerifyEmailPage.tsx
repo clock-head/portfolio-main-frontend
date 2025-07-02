@@ -7,11 +7,14 @@ import Button from '../components/Button';
 import { useQuery } from '../hooks/useQuery';
 import { useVerifyEmailToken } from '../hooks/useVerifyEmailToken';
 import { useSendVerificationEmail } from '../hooks/useSendVerificationEmail';
+import { useAuth } from '../contexts/AuthProvider/AuthProvider';
 import { AthenaCore } from 'athena-core';
 
 export const VerifyEmailPage: React.FC = () => {
   const query = useQuery();
   const token = query.get('token');
+
+  const { user, loading } = useAuth();
 
   useVerifyEmailToken(token);
 
@@ -57,8 +60,12 @@ export const VerifyEmailPage: React.FC = () => {
           footer={null}
         >
           <Unit layout="flex" justifyContent="left" alignItems="left">
-            {!token && (
-              <Button onClick={sendVerificationEmail}>
+            {user && !token && (
+              <Button
+                onClick={() => {
+                  sendVerificationEmail(user?.email);
+                }}
+              >
                 Send Verification Email
               </Button>
             )}

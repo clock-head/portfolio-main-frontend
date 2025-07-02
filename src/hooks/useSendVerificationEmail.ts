@@ -2,7 +2,7 @@
 import { AthenaCore } from 'athena-core';
 
 export const useSendVerificationEmail = () => {
-  const sendVerificationEmail = async () => {
+  const sendVerificationEmail = async (email: string) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/auth/send-verification-email`,
@@ -12,6 +12,7 @@ export const useSendVerificationEmail = () => {
           headers: {
             'Content-Type': 'application/json',
           },
+          body: JSON.stringify({ email }),
         }
       );
 
