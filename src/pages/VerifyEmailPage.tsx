@@ -18,7 +18,7 @@ export const VerifyEmailPage: React.FC = () => {
 
   useVerifyEmailToken(token);
 
-  const { sendVerificationEmail } = useSendVerificationEmail();
+  const { sendVerificationEmail, sent } = useSendVerificationEmail();
 
   const context = {
     section: {
@@ -60,7 +60,7 @@ export const VerifyEmailPage: React.FC = () => {
           footer={null}
         >
           <Unit layout="flex" justifyContent="left" alignItems="left">
-            {user && !token && (
+            {!sent && user && !token && (
               <Button
                 onClick={() => {
                   sendVerificationEmail(user?.email);

@@ -1,7 +1,10 @@
 // hooks/useSendVerificationEmail.ts
 import { AthenaCore } from 'athena-core';
+import { useState } from 'react';
 
 export const useSendVerificationEmail = () => {
+  const [sent, setSent] = useState<boolean>(false);
+
   const sendVerificationEmail = async (email: string) => {
     try {
       const response = await fetch(
@@ -37,8 +40,10 @@ export const useSendVerificationEmail = () => {
             : 'Unknown error sending verification email.',
         type: 'error',
       });
+    } finally {
+      setSent(true);
     }
   };
 
-  return { sendVerificationEmail };
+  return { sendVerificationEmail, sent };
 };
