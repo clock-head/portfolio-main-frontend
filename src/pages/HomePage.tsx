@@ -20,7 +20,8 @@ export const HomePage = () => {
   const { user, loading, login, logout, isAuthenticated } = useAuth();
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
 
-  console.log(user);
+  console.log('user: ', user);
+  console.log('is authenticated: ', isAuthenticated);
 
   useEffect(() => {
     if (!isAuthenticated) return;

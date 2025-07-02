@@ -149,6 +149,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           message: `thank you for signing up with us, ${user.firstName}`,
         });
         setUser(data.user);
+        console.log(user);
         setIsAuthenticated(true);
         AthenaCore.redirect('/');
       } else {
