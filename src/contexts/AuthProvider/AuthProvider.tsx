@@ -145,10 +145,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const user = response.ok ? data.user : null;
 
       if (response.ok) {
-        AthenaCore.openModal({
-          title: 'Sign up Success',
-          message: `thank you for signing up with us, ${user.firstName}`,
-        });
         setUser(data.user);
         setIsAuthenticated(true);
         setLoading(false);
