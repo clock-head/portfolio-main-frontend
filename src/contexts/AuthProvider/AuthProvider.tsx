@@ -130,6 +130,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signup = async (credentials: SignupCredentials): Promise<void> => {
     try {
+      setLoading(true);
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/auth/signup`,
         {
@@ -151,6 +152,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser(data.user);
         console.log(user);
         setIsAuthenticated(true);
+        setLoading(false);
         AthenaCore.redirect('/');
       } else {
         setUser(null);

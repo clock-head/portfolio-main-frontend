@@ -11,6 +11,7 @@ import DropDown from '../components/DropDown/DropDown';
 import { useWindowSize } from '../hooks/useWindowSize';
 import { useAuth } from '../contexts/AuthProvider/AuthProvider';
 import Dashboard from '../components/Dashboard/Dashboard';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export const HomePage = () => {
   const windowSize = useWindowSize();
@@ -24,12 +25,14 @@ export const HomePage = () => {
   console.log('is authenticated: ', isAuthenticated);
 
   useEffect(() => {
-    if (!isAuthenticated) return;
-    const refreshToDashboard = async (): Promise<void> => {
-      setShowDashboard(true);
-    };
-    refreshToDashboard();
-  }, [isAuthenticated]);
+    if (loading) return;
+    if (!loading) {
+      const refreshToDashboard = async (): Promise<void> => {
+        setShowDashboard(true);
+      };
+      refreshToDashboard();
+    }
+  }, [isAuthenticated, loading]);
 
   const toggleNavMobile = () => {
     setNavDropDown((prev) => !prev);
@@ -106,8 +109,9 @@ export const HomePage = () => {
               </Unit>
             }
           >
+            {loading && <LoadingSpinner></LoadingSpinner>}
             {!isAuthenticated && <AuthFlow />}
-            {showDashboard && user && <Dashboard user={user} />}
+            {user && <Dashboard user={user} />}
             {/* <p>
               This site is a showcase of modular design, built for speed and
               clarity.
