@@ -24,6 +24,7 @@ export const useBookingLogic = () => {
 
   const selectTime = (selectedTime: string | null) => {
     setTime(selectedTime);
+    console.log(time);
   };
 
   const toggleMonth = (newDate: Date) => {
