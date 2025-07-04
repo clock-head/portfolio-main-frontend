@@ -6,6 +6,7 @@ import { DateInput, DateInputDaySelectedState } from 'src/types/DateInput';
 import Button from './Button';
 import { AthenaCore } from 'athena-core';
 import { format, addMonths, subMonths } from 'date-fns';
+import Unit from './Unit';
 
 interface ConsultationBookingFormProps {
   date: DateInput;
@@ -68,12 +69,19 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   return (
     <div className="form-overlay">
       <div className="booking-form">
-        {!timeslotIsAvailable && (
-          <h3 className="not-available">{'Not Available'}</h3>
-        )}
-        <Button variant="outline" onClick={handleCloseForm}>
-          X
-        </Button>
+        <Unit layout="flex">
+          {!timeslotIsAvailable && (
+            <h3 className="not-available">{'Not Available'}</h3>
+          )}
+          <Button
+            variant="outline"
+            onClick={handleCloseForm}
+            intent="booking-form-close"
+          >
+            X
+          </Button>
+        </Unit>
+
         {timeslotIsAvailable && (
           <h3>{`${date.day}-0${format(selectedDate, 'MMMM')}`}</h3>
         )}

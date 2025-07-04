@@ -107,6 +107,10 @@
   margin: 0 auto;
 }
 
+.intent-booking-form-close {
+  padding: 0.02rem 0.9rem;
+}
+
 /* .intent-carousel {
   padding: 1rem 1.5rem;
 } */
