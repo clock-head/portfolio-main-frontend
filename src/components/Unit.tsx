@@ -5,7 +5,14 @@ import './Unit.css';
 interface UnitProps {
   children: React.ReactNode;
   background?: string;
-  padding?: string;
+  paddingLeft?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  paddingRight?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  paddingTop?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  paddingBottom?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  marginLeft?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  marginRight?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  marginTop?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+  marginBottom?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
   justifyContent?: string;
   justifyItems?: string;
   alignContent?: string;
@@ -23,7 +30,14 @@ interface UnitProps {
 const Unit: React.FC<UnitProps> = ({
   children,
   background,
-  padding,
+  paddingLeft,
+  paddingRight,
+  paddingBottom,
+  paddingTop,
+  marginLeft,
+  marginRight,
+  marginBottom,
+  marginTop,
   justifyContent,
   justifyItems,
   alignContent,
@@ -108,9 +122,56 @@ const Unit: React.FC<UnitProps> = ({
     ? `justify-self-${context.unit.justifySelf}`
     : '';
 
+  const unitPaddingLeft = paddingLeft
+    ? `padding-left-${paddingLeft}`
+    : context?.unit?.paddingLeft
+    ? `padding-left-${paddingLeft}`
+    : '';
+  const unitPaddingRight = paddingRight
+    ? `padding-right-${paddingRight}`
+    : context?.unit?.paddingRight
+    ? `padding-right-${paddingRight}`
+    : '';
+  const unitPaddingTop = paddingTop
+    ? `padding-top-${paddingTop}`
+    : context?.unit?.paddingTop
+    ? `padding-top-${paddingTop}`
+    : '';
+  const unitPaddingBottom = paddingBottom
+    ? `padding-bottom-${paddingBottom}`
+    : context?.unit?.paddingBottom
+    ? `padding-bottom-${paddingBottom}`
+    : '';
+  const unitMarginLeft = marginLeft
+    ? `margin-left-${marginLeft}`
+    : context?.unit?.marginLeft
+    ? `padding-left-${marginLeft}`
+    : '';
+  const unitMarginRight = marginRight
+    ? `margin-right-${marginRight}`
+    : context?.unit?.marginRight
+    ? `padding-right-${marginRight}`
+    : '';
+  const unitMarginTop = marginTop
+    ? `margin-top-${marginTop}`
+    : context?.unit?.marginTop
+    ? `margin-top-${marginTop}`
+    : '';
+  const unitMarginBottom = marginBottom
+    ? `margin-bottom-${marginBottom}`
+    : context?.unit?.marginBottom
+    ? `margin-bottom-${marginBottom}`
+    : '';
+
+  const unitBackground = background
+    ? background
+    : context?.unit?.background
+    ? `background`
+    : '';
+
   return (
     <div
-      className={`unit ${unitLayout} ${unitFlexDirection} ${unitClass} ${unitGap} ${unitColSpan} ${unitRowSpan} ${unitAlignContent} ${unitAlignItems} ${unitJustifyContent} ${unitJustifyItems} ${unitAlignSelf} ${unitJustifySelf}`.trim()}
+      className={`unit ${unitLayout} ${unitFlexDirection} ${unitClass} ${unitGap} ${unitColSpan} ${unitRowSpan} ${unitAlignContent} ${unitAlignItems} ${unitJustifyContent} ${unitJustifyItems} ${unitAlignSelf} ${unitJustifySelf} ${unitPaddingLeft} ${unitPaddingRight} ${unitPaddingTop} ${unitPaddingBottom} ${unitMarginTop} ${unitMarginBottom} ${unitMarginLeft} ${unitMarginRight} ${unitBackground}`.trim()}
     >
       {children}
     </div>

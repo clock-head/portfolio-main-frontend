@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './AuthForm.css';
 import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
 import { AthenaCore } from 'athena-core';
+import Button from '../Button';
+import Unit from '../Unit';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
@@ -10,6 +13,7 @@ interface AuthFormProps {
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
   const { login, signup, logout, loading, user } = useAuth();
+  const windowSize = useWindowSize();
 
   console.log(user);
 
@@ -102,7 +106,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
             showWeakPasswordPrompt ? 'show' : ''
           }`}
         >
-          password must contain a minimum of 12 letters, numbers and capitals
+          password must contain a min of 12 letters, numbers and capitals.
         </p>
       </div>
 
@@ -120,9 +124,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
         {mode === 'login'
           ? "Don't have an account?"
           : 'Already have an account?'}{' '}
-        <button type="button" onClick={toggleAuthState} className="auth-toggle">
+        <Button type="button" onClick={toggleAuthState} className="auth-toggle">
           {mode === 'login' ? 'Sign up' : 'Log in'}
-        </button>
+        </Button>
       </p>
     </form>
   );

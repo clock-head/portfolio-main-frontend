@@ -13,7 +13,7 @@ interface BookingDetails {
 
 // Consultation details for get function to retrieve consultation.
 export interface ConsultationDetails {
-  consultationId: number;
+  consultation_id: number;
   startTime: string;
   endTime: string;
   resolutionStatus: string;
@@ -39,7 +39,9 @@ export const useConsultation = (): UseBookConsultationResult => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/consultation/my-consultation`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/consultation/my-active-consultation`,
         {
           method: 'GET',
           credentials: 'include',
@@ -56,6 +58,7 @@ export const useConsultation = (): UseBookConsultationResult => {
         });
       }
 
+      setLoading(false);
       setConsultation(data.consultation);
     } catch (error: unknown) {
       setLoading(false);
@@ -96,6 +99,7 @@ export const useConsultation = (): UseBookConsultationResult => {
         type: 'success',
       });
       AthenaCore.sealLog('Consultation booked', { details, data });
+      AthenaCore.redirect('/payment?type=consultation');
     } catch (error) {
       AthenaCore.openModal({
         title: 'Booking Error',

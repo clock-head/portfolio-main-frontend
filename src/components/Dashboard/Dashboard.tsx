@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useConsultation } from '../../hooks/useConsultation';
-import Consultation from './ConsultationDetails';
+import Consultation from './Consultation';
 import { User } from '../../types/Auth';
 import Section from '../Section';
 import './Dashboard.css';

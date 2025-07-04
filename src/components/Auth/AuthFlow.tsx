@@ -4,6 +4,7 @@ import AuthErrorBoundary from './AuthErrorBoundary';
 import AuthForm from './AuthForm';
 import Section from '../Section';
 import Unit from '../Unit';
+import './AuthFlow.css';
 
 const AuthFlow: React.FC = () => {
   const [mode, setMode] = useState<string | null>(null);
@@ -18,7 +19,14 @@ const AuthFlow: React.FC = () => {
   return (
     <>
       {mode === null && (
-        <Unit layout="flex" gap="sm" justifyContent="left">
+        <Unit
+          layout="flex"
+          gap="sm"
+          justifyContent="left"
+          paddingTop="lg"
+          paddingBottom=""
+          marginBottom=""
+        >
           <Button
             onClick={() => {
               setMode((prevState) => 'signup');

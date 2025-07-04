@@ -18,19 +18,19 @@
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .form-group input[type='text'],
 .form-group input[type='email'],
 .form-group input[type='password'] {
   width: 100%;
-  padding: 0.2rem;
+  padding: 0.35rem;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
@@ -48,7 +48,7 @@
 
 .auth-form button[type='submit'] {
   width: 100%;
-  padding: 0.55rem;
+  padding: 0.8rem;
   background-color: #1f8a9a;
   border: none;
   border-radius: 4px;
@@ -56,6 +56,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-bottom: 0.7rem;
 }
 
 .auth-form button[type='submit']:hover {
@@ -64,7 +65,16 @@
 }
 
 .auth-toggle {
-  padding: 0.5rem 4rem;
+  padding: 0.5rem 2.5rem;
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 430px) {
+  .auth-toggle {
+    padding: 0.5rem 2.5rem;
+    margin-top: 0.5rem;
+    margin-left: 6.5rem;
+  }
 }
 
 .weak-password-prompt {

@@ -35,7 +35,6 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
             background="bg-dark"
             justifyContent="center"
             alignItems="center"
-            padding="py-6"
           >
             <Button variant="outline">{project.title}</Button>
           </Unit>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConsultationDetails.css';
+import './Consultation.css';
 import { ConsultationDetails } from 'src/hooks/useConsultation';
 
 interface ConsultationDetailsProps {

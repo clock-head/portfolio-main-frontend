@@ -68,6 +68,141 @@
   gap: 3rem;
 }
 
+/* padding sm */
+
+.unit.padding-left-sm {
+  padding-left: 0.5rem;
+}
+.unit.padding-right-sm {
+  padding-right: 0.5rem;
+}
+.unit.padding-top-sm {
+  padding-top: 0.5rem;
+}
+.unit.padding-bottom-sm {
+  padding-bottom: 0.5rem;
+}
+
+/* margin sm */
+
+.unit.margin-left-sm {
+  margin-left: 0.5rem;
+}
+.unit.margin-right-sm {
+  margin-right: 0.5rem;
+}
+.unit.margin-top-sm {
+  margin-top: 0.5rem;
+}
+.unit.margin-bottom-sm {
+  margin-bottom: 0.5rem;
+}
+
+/* padding md */
+
+.unit.padding-left-md {
+  padding-left: 1rem;
+}
+.unit.padding-right-md {
+  padding-right: 1rem;
+}
+.unit.padding-top-md {
+  padding-top: 1rem;
+}
+.unit.padding-bottom-md {
+  padding-bottom: 1rem;
+}
+
+/* margin md */
+
+.unit.margin-left-md {
+  margin-left: 1rem;
+}
+.unit.margin-right-md {
+  margin-right: 1rem;
+}
+.unit.margin-top-md {
+  margin-top: 1rem;
+}
+.unit.margin-bottom-md {
+  margin-bottom: 1rem;
+}
+
+/* padding lg */
+
+.unit.padding-left-lg {
+  padding-left: 2rem;
+}
+.unit.padding-right-lg {
+  padding-right: 2rem;
+}
+.unit.padding-top-lg {
+  padding-top: 2rem;
+}
+.unit.padding-bottom-lg {
+  padding-bottom: 2rem;
+}
+
+/* margin lg */
+
+.unit.margin-left-lg {
+  margin-left: 2rem;
+}
+.unit.margin-right-lg {
+  margin-right: 2rem;
+}
+.unit.margin-top-lg {
+  margin-top: 2rem;
+}
+.unit.margin-bottom-lg {
+  margin-bottom: 2rem;
+}
+
+/* padding xl */
+
+.unit.padding-left-xl {
+  padding-left: 4rem;
+}
+.unit.padding-right-xl {
+  padding-right: 4rem;
+}
+.unit.padding-top-xl {
+  padding-top: 4rem;
+}
+.unit.padding-bottom-xl {
+  padding-bottom: 4rem;
+}
+
+/* margin xl */
+
+.unit.margin-left-xl {
+  margin-left: 4rem;
+}
+.unit.margin-right-xl {
+  margin-right: 4rem;
+}
+.unit.margin-top-xl {
+  margin-top: 4rem;
+}
+.unit.margin-bottom-xl {
+  margin-bottom: 4rem;
+}
+
+/* margin xxl */
+
+.unit.margin-left-xxl {
+  margin-left: 8rem;
+}
+.unit.margin-right-xxl {
+  margin-right: 8rem;
+}
+.unit.margin-top-xxl {
+  margin-top: 8rem;
+}
+.unit.margin-bottom-xxl {
+  margin-bottom: 8rem;
+}
+
 .unit.justify-content-left {
   justify-content: flex-start;
 }

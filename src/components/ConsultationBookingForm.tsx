@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/AuthProvider/AuthProvider';
 import { DateInput, DateInputDaySelectedState } from 'src/types/DateInput';
 import Button from './Button';
 import { AthenaCore } from 'athena-core';
+import { format, addMonths, subMonths } from 'date-fns';
 
 interface ConsultationBookingFormProps {
   date: DateInput;
@@ -73,7 +74,9 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
         <Button variant="outline" onClick={handleCloseForm}>
           X
         </Button>
-        {timeslotIsAvailable && <h3>{`${date.day}-0${date.month + 1}`}</h3>}
+        {timeslotIsAvailable && (
+          <h3>{`${date.day}-0${format(selectedDate, 'MMMM')}`}</h3>
+        )}
         {time ? (
           <form onSubmit={handleSubmit}>
             <div>
@@ -84,17 +87,6 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
             <div>
               <label>End Time:</label>
               <input type="text" name="end-time" value={endTime} readOnly />
-            </div>
-
-            <div>
-              <label>Phone:</label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="optional"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
             </div>
 
             <button

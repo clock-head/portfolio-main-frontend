@@ -15,6 +15,18 @@ interface LayoutUnitSettings {
   alignSelf?: string;
   gap?: string;
   flexDirection?: string;
+
+  paddingLeft?: 'sm' | 'md' | 'lg' | 'xl' | '';
+  paddingRight?: 'sm' | 'md' | 'lg' | 'xl' | '';
+  paddingTop?: 'sm' | 'md' | 'lg' | 'xl' | '';
+  paddingBottom?: 'sm' | 'md' | 'lg' | 'xl' | '';
+
+  marginLeft?: 'sm' | 'md' | 'lg' | 'xl' | '';
+  marginRight?: 'sm' | 'md' | 'lg' | 'xl' | '';
+  marginTop?: 'sm' | 'md' | 'lg' | 'xl' | '';
+  marginBottom?: 'sm' | 'md' | 'lg' | 'xl' | '';
+
+  background?: string;
 }
 
 interface LayoutSectionSettings {

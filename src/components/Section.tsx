@@ -4,16 +4,16 @@ import { useLayout } from '../contexts/layout/LayoutProvider';
 
 interface SectionProps {
   children: React.ReactNode;
-  id: string;
-  layout: string;
-  alignContent: string;
-  alignItems: string;
-  justifyContent: string;
-  justifyItems: string;
-  width: string;
-  gap: string;
-  background: string;
-  padding: string;
+  id?: string;
+  layout?: string;
+  alignContent?: string;
+  alignItems?: string;
+  justifyContent?: string;
+  justifyItems?: string;
+  width?: string;
+  gap?: string;
+  background?: string;
+  padding?: string;
 }
 
 const Section = ({
