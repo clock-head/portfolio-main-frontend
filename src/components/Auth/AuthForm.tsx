@@ -120,14 +120,16 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, toggleAuthState }) => {
           : 'Sign Up'}
       </button>
 
-      <p>
-        {mode === 'login'
-          ? "Don't have an account?"
-          : 'Already have an account?'}{' '}
+      <div className="auth-toggle-container">
+        <p className="auth-toggle-text">
+          {mode === 'login'
+            ? "Don't have an account?"
+            : 'Already have an account?'}
+        </p>
         <Button type="button" onClick={toggleAuthState} className="auth-toggle">
           {mode === 'login' ? 'Sign up' : 'Log in'}
         </Button>
-      </p>
+      </div>
     </form>
   );
 };
