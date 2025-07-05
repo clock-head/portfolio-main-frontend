@@ -20,6 +20,7 @@ export interface ConsultationDetails {
   selectedDate: string;
   hasRescheduled: boolean;
   userId: number;
+  isPaid: boolean;
 }
 
 interface UseBookConsultationResult {
