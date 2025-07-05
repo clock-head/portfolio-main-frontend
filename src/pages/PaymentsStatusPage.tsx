@@ -31,6 +31,8 @@ export const PaymentStatusPage = () => {
   const success = status === 'success';
   const failure = status === 'failure';
 
+  console.log(success, failure, consultationId);
+
   useEffect(() => {
     if (!success && !failure) {
       AthenaCore.redirect('/');
