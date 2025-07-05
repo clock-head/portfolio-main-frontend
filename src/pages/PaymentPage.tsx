@@ -29,24 +29,21 @@ export const PaymentPage = () => {
   const { initiatePayment, checkoutReady, checkoutUrl } = usePayment();
 
   useEffect(() => {
-    console.log('PaymentPage mounted');
-    console.log(user);
     if (!user) return;
 
-    const getUserConsultation = async () => {
-      await fetchConsultation(user);
-      console.log('Consultation fetched:', consultation);
+    const initPayment = async () => {
+      // await fetchConsultation();
+      // console.log('Consultation fetched:', consultation);
+      // console.log('loading', loading);
+
       if (consultation) {
-        console.log('Consultation fetched 2:', consultation);
         await initiatePayment(consultation.consultation_id);
       }
     };
 
-    console.log('type', type);
-
     if (type === 'consultation') {
       console.log('Fetching user consultation');
-      getUserConsultation();
+      initPayment();
     }
 
     // if (type === 'subscription') {  }

@@ -19,10 +19,11 @@ export interface ConsultationDetails {
   resolutionStatus: string;
   selectedDate: string;
   hasRescheduled: boolean;
+  userId: number;
 }
 
 interface UseBookConsultationResult {
-  fetchConsultation: (user: User) => Promise<void>;
+  fetchConsultation: () => Promise<void>;
   bookConsultation: (details: BookingDetails) => Promise<void>;
   consultation: ConsultationDetails | null;
   loading: boolean;
@@ -34,7 +35,7 @@ export const useConsultation = (): UseBookConsultationResult => {
     null
   );
 
-  const fetchConsultation = async (user: User): Promise<void> => {
+  const fetchConsultation = async (): Promise<void> => {
     setLoading(true);
 
     try {
@@ -102,6 +103,7 @@ export const useConsultation = (): UseBookConsultationResult => {
       });
       AthenaCore.sealLog('Consultation booked', { details, data });
       AthenaCore.redirect('/payment?type=consultation');
+      setConsultation(data.consultation);
     } catch (error) {
       AthenaCore.openModal({
         title: 'Booking Error',

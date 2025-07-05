@@ -18,7 +18,7 @@ const Dashboard = ({ user }: DashboardProps) => {
   useEffect(() => {
     const fetchUserConsultation = async () => {
       if (user) {
-        await fetchConsultation(user);
+        await fetchConsultation();
       }
     };
 
