@@ -31,7 +31,7 @@ export const PaymentStatusPage = () => {
   const success = status === 'success';
   const failure = status === 'failure';
 
-  console.log(success, failure, consultationId);
+  console.log(status, success, failure, consultationId);
 
   useEffect(() => {
     if (!success && !failure) {
