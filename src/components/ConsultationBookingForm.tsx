@@ -49,6 +49,8 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
 
     const { isAuthenticated } = useAuth();
 
+    console.log('isAuthenticated', isAuthenticated);
+
     if (isAuthenticated) {
       bookConsultation({
         selectedDate,
@@ -64,6 +66,10 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
       });
 
       AthenaCore.redirect('/');
+      AthenaCore.throwError({
+        status: 401,
+        message: 'You must be logged in to book a consultation.',
+      });
     }
   };
 
