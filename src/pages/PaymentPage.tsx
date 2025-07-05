@@ -29,6 +29,8 @@ export const PaymentPage = () => {
   const { initiatePayment, checkoutReady, checkoutUrl } = usePayment();
 
   useEffect(() => {
+    console.log('PaymentPage mounted');
+    console.log(user);
     if (!user) return;
 
     const getUserConsultation = async () => {
@@ -38,12 +40,16 @@ export const PaymentPage = () => {
       }
     };
 
+    console.log('type', type);
+
     if (type === 'consultation') {
       getUserConsultation();
     }
 
     // if (type === 'subscription') {  }
   }, []);
+
+  console.log('checkoutReady', checkoutReady);
 
   const proceedToCheckout = async () => {
     window.location.href = checkoutUrl;
@@ -83,7 +89,9 @@ export const PaymentPage = () => {
           )}
 
           {checkoutReady && consultation && (
-            <Button onClick={proceedToCheckout}>Proceed To Payment</Button>
+            <Button variant="outline" onClick={proceedToCheckout}>
+              Proceed To Payment
+            </Button>
           )}
         </Card>
       </Section>
