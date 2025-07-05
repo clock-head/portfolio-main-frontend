@@ -4,7 +4,7 @@ import Section from '../components/Section';
 import Unit from '../components/Unit';
 import { Card } from '../components/Card';
 import Button from '../components/Button';
-import { useConsultation } from '../hooks/useConsultation';
+import { useConsultation, ConsultationDetails } from '../hooks/useConsultation';
 import { usePayment } from '../hooks/usePayment';
 import { useQuery } from '../hooks/useQuery';
 import { useAuth } from '../contexts/AuthProvider/AuthProvider';
@@ -32,7 +32,8 @@ export const PaymentPage = () => {
     if (!user) return;
 
     const initPayment = async () => {
-      await fetchConsultation();
+      const consultation: ConsultationDetails | null =
+        await fetchConsultation();
       // console.log('Consultation fetched:', consultation);
       // console.log('loading', loading);
 

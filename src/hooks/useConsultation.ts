@@ -23,7 +23,7 @@ export interface ConsultationDetails {
 }
 
 interface UseBookConsultationResult {
-  fetchConsultation: () => Promise<void>;
+  fetchConsultation: () => Promise<ConsultationDetails | null>;
   bookConsultation: (details: BookingDetails) => Promise<void>;
   consultation: ConsultationDetails | null;
   loading: boolean;
@@ -35,7 +35,7 @@ export const useConsultation = (): UseBookConsultationResult => {
     null
   );
 
-  const fetchConsultation = async (): Promise<void> => {
+  const fetchConsultation = async (): Promise<ConsultationDetails | null> => {
     setLoading(true);
 
     try {
@@ -63,6 +63,7 @@ export const useConsultation = (): UseBookConsultationResult => {
 
       setLoading(false);
       setConsultation(data.consultation);
+      return data.consultation;
     } catch (error: unknown) {
       setLoading(false);
       AthenaCore.throwError({
@@ -70,6 +71,8 @@ export const useConsultation = (): UseBookConsultationResult => {
         message:
           error instanceof Error ? error.message : 'Internal Server Error.',
       });
+
+      return null;
     }
   };
 
