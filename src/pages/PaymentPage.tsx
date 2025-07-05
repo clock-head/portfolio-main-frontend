@@ -32,7 +32,7 @@ export const PaymentPage = () => {
     if (!user) return;
 
     const initPayment = async () => {
-      // await fetchConsultation();
+      await fetchConsultation();
       // console.log('Consultation fetched:', consultation);
       // console.log('loading', loading);
 
@@ -42,7 +42,6 @@ export const PaymentPage = () => {
     };
 
     if (type === 'consultation') {
-      console.log('Fetching user consultation');
       initPayment();
     }
 
