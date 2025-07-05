@@ -7,6 +7,7 @@ import Button from './Button';
 import { AthenaCore } from 'athena-core';
 import { format, addMonths, subMonths } from 'date-fns';
 import Unit from './Unit';
+import Section from './Section';
 
 interface ConsultationBookingFormProps {
   date: DateInput;
@@ -69,22 +70,26 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   return (
     <div className="form-overlay">
       <div className="booking-form">
-        <Unit layout="flex">
-          {!timeslotIsAvailable && (
-            <h3 className="not-available">{'Not Available'}</h3>
-          )}
+        <Section layout="flex">
+          <Unit layout="flex" gap="md">
+            {!timeslotIsAvailable && (
+              <h3 className="not-available">{'Not Available'}</h3>
+            )}
 
-          {timeslotIsAvailable && (
-            <h3>{`${date.day}-${format(selectedDate, 'MMMM')}`}</h3>
-          )}
-          <Button
-            variant="outline"
-            onClick={handleCloseForm}
-            intent="booking-form-close"
-          >
-            X
-          </Button>
-        </Unit>
+            {timeslotIsAvailable && (
+              <h3>{`${date.day}-${format(selectedDate, 'MMMM')}`}</h3>
+            )}
+          </Unit>
+          <Unit justifySelf="right">
+            <Button
+              variant="outline"
+              onClick={handleCloseForm}
+              intent="booking-form-close"
+            >
+              X
+            </Button>
+          </Unit>
+        </Section>
 
         {time ? (
           <form onSubmit={handleSubmit}>

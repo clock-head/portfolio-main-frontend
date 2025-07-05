@@ -219,10 +219,6 @@
   align-items: flex-start;
 }
 
-.unit.align-center {
-  align-items: center;
-}
-
 .unit.align-bottom {
   align-items: flex-end;
 }
