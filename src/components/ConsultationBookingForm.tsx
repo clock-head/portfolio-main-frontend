@@ -80,7 +80,7 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
               <h3>{`${date.day}-${format(selectedDate, 'MMMM')}`}</h3>
             )}
           </Unit>
-          <Unit justifySelf="right">
+          <Unit layout="flex" justifySelf="right">
             <Button
               variant="outline"
               onClick={handleCloseForm}
