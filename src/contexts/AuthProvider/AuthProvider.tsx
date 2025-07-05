@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const loadSession = async () => {
       try {
+        console.log('firing session fetch');
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/auth/me`,
           {
