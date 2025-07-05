@@ -41,7 +41,7 @@ export const CalendarPage = () => {
   const context = {
     section: {
       layout: 'grid',
-      background: 'bg-dark',
+      background: 'dark',
       justifyItems: 'center',
     },
 

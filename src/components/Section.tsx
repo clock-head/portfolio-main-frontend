@@ -5,7 +5,14 @@ import { useLayout } from '../contexts/layout/LayoutProvider';
 interface SectionProps {
   children: React.ReactNode;
   id?: string;
-  layout?: string;
+  layout?:
+    | 'flex'
+    | 'grid'
+    | 'wrap'
+    | 'flex-vertical'
+    | 'appointment-grid'
+    | 'grid-calendar'
+    | '';
   alignContent?: string;
   alignItems?: string;
   justifyContent?: string;
@@ -26,6 +33,7 @@ const Section = ({
   justifyItems,
   width,
   gap,
+  background,
 }: SectionProps) => {
   const { context } = useLayout();
   const sectionClass = context?.section?.className || '';
@@ -97,13 +105,17 @@ const Section = ({
     ? `row-span-${context.section.rowSpan}`
     : '';
 
-  const background = context?.section?.background || '';
+  const sectionBackground = background
+    ? `bg-${background}`
+    : context?.section?.background
+    ? `bg-${context.section.background}`
+    : '';
   const padding = context?.section?.padding || '';
 
   return (
     <section
       id={id}
-      className={`section ${sectionWidth} ${background} ${padding} ${sectionLayout} ${sectionClass} ${sectionPositioning} ${sectionColSpan} ${sectionRowSpan} ${sectionAlignSelf} ${sectionJustifySelf} ${sectionAlignItems} ${sectionAlignContent} ${sectionJustifyItems} ${sectionJustifyContent} ${sectionGap}`.trim()}
+      className={`section ${sectionWidth} ${sectionBackground} ${padding} ${sectionLayout} ${sectionClass} ${sectionPositioning} ${sectionColSpan} ${sectionRowSpan} ${sectionAlignSelf} ${sectionJustifySelf} ${sectionAlignItems} ${sectionAlignContent} ${sectionJustifyItems} ${sectionJustifyContent} ${sectionGap}`.trim()}
     >
       {children}
     </section>
