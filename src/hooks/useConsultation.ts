@@ -103,7 +103,6 @@ export const useConsultation = (): UseBookConsultationResult => {
       });
       AthenaCore.sealLog('Consultation booked', { details, data });
       AthenaCore.redirect('/payment?type=consultation');
-      setConsultation(data.consultation);
     } catch (error) {
       AthenaCore.openModal({
         title: 'Booking Error',
