@@ -44,6 +44,8 @@ export const usePayment = (): usePaymentResult => {
         }
       }
 
+      console.log('Payment initiated:', data.checkoutUrl);
+
       setCheckoutReady(true);
       setCheckoutUrl(data.checkoutUrl);
     } catch (error: unknown) {

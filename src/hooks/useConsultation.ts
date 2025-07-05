@@ -58,6 +58,8 @@ export const useConsultation = (): UseBookConsultationResult => {
         });
       }
 
+      console.log('Consultation fetched:', data.consultation);
+
       setLoading(false);
       setConsultation(data.consultation);
     } catch (error: unknown) {

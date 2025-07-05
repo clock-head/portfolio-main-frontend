@@ -35,8 +35,9 @@ export const PaymentPage = () => {
 
     const getUserConsultation = async () => {
       await fetchConsultation(user);
+      console.log('Consultation fetched:', consultation);
       if (consultation) {
-        console.log('Consultation fetched:', consultation);
+        console.log('Consultation fetched 2:', consultation);
         await initiatePayment(consultation.consultation_id);
       }
     };
