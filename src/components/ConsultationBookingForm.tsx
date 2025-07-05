@@ -70,7 +70,7 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   return (
     <div className="form-overlay">
       <div className="booking-form">
-        <Section layout="flex" background="transparent">
+        <Section layout="flex" background="transparent" justifyContent="center">
           <Unit layout="flex" gap="md">
             {!timeslotIsAvailable && (
               <h3 className="not-available">{'Not Available'}</h3>
