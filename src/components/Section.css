@@ -22,6 +22,26 @@
   flex-wrap: wrap;
 }
 
+.section.grow-1 {
+  flex-grow: 1;
+}
+
+.section.grow-2 {
+  flex-grow: 2;
+}
+
+.section.grow-3 {
+  flex-grow: 3;
+}
+
+.section.shrink-1 {
+  flex-shrink: 1;
+}
+
+.section.shrink-2 {
+  flex-shrink: 2;
+}
+
 .section.flex-vertical {
   flex-direction: column;
 }

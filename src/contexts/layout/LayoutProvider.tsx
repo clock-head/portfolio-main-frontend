@@ -16,6 +16,9 @@ interface LayoutUnitSettings {
   gap?: string;
   flexDirection?: string;
 
+  flexGrow?: '1' | '2' | '3' | '4' | '';
+  flexShrink?: '1' | '2' | '3' | '';
+
   paddingLeft?: 'sm' | 'md' | 'lg' | 'xl' | '';
   paddingRight?: 'sm' | 'md' | 'lg' | 'xl' | '';
   paddingTop?: 'sm' | 'md' | 'lg' | 'xl' | '';

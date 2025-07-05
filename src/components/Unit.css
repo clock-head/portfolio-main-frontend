@@ -22,8 +22,36 @@
 
 .unit.flex {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
+}
+
+.unit.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.unit.grow-1 {
+  flex-grow: 1;
+}
+
+.unit.grow-2 {
+  flex-grow: 2;
+}
+
+.unit.grow-3 {
+  flex-grow: 3;
+}
+
+.unit.shrink-1 {
+  flex-shrink: 1;
+}
+
+.unit.shrink-2 {
+  flex-shrink: 2;
+}
+
+.unit.shrink-3 {
+  flex-shrink: 3;
 }
 
 .unit.flex-vertical {
@@ -279,6 +307,10 @@
   grid-column-end: span var(--col-span, 1);
 }
 
+.unit.col-span-0 {
+  grid-column: span 0;
+}
+
 .unit.col-span-1 {
   grid-column: span 1;
 }
@@ -290,6 +322,10 @@
 }
 .unit.col-span-4 {
   grid-column: span 4;
+}
+
+.unit.col-span-0 {
+  grid-column: span 0;
 }
 
 .unit.row-span-1 {

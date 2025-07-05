@@ -21,6 +21,9 @@ interface UnitProps {
   alignSelf?: string;
   layout?: string;
   flexDirection?: string;
+  flexGrow?: '1' | '2' | '3' | '4' | '';
+  flexShrink?: '1' | '2' | '3' | '';
+
   colSpan?: string;
   rowSpan?: string;
   gap?: string;
@@ -46,6 +49,8 @@ const Unit: React.FC<UnitProps> = ({
   alignSelf,
   layout = '',
   flexDirection = '',
+  flexGrow = '',
+  flexShrink = '',
   colSpan,
   rowSpan,
   gap,
@@ -68,6 +73,18 @@ const Unit: React.FC<UnitProps> = ({
     ? `flex-${flexDirection}`
     : context?.unit?.flexDirection
     ? `flex-${context.unit.flexDirection}`
+    : '';
+
+  const unitFlexGrow = flexGrow
+    ? `flex-grow-${flexGrow}`
+    : context?.unit?.flexGrow
+    ? `flex-grow-${context.unit.flexGrow}`
+    : '';
+
+  const unitFlexShrink = flexShrink
+    ? `flex-shrink-${flexShrink}`
+    : context?.unit?.flexShrink
+    ? `flex-shrink-${context.unit.flexShrink}`
     : '';
 
   const unitGap = gap

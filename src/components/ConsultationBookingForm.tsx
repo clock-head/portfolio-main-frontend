@@ -70,8 +70,13 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   return (
     <div className="form-overlay">
       <div className="booking-form">
-        <Section layout="flex" background="transparent" justifyContent="center">
-          <Unit layout="flex" gap="md">
+        <Section
+          layout="flex"
+          background="transparent"
+          gap="lg"
+          justifyContent="left"
+        >
+          <Unit layout="flex" flexGrow="4" gap="sm">
             {!timeslotIsAvailable && (
               <h3 className="not-available">{'Not Available'}</h3>
             )}
@@ -80,7 +85,13 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
               <h3>{`${date.day}-${format(selectedDate, 'MMMM')}`}</h3>
             )}
           </Unit>
-          <Unit layout="flex" justifySelf="right">
+          <Unit
+            layout="flex"
+            flexShrink="3"
+            justifySelf="right"
+            colSpan="0"
+            rowSpan="0"
+          >
             <Button
               variant="outline"
               onClick={handleCloseForm}
