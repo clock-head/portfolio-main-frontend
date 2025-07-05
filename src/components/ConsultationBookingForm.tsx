@@ -73,6 +73,10 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
           {!timeslotIsAvailable && (
             <h3 className="not-available">{'Not Available'}</h3>
           )}
+
+          {timeslotIsAvailable && (
+            <h3>{`${date.day}-${format(selectedDate, 'MMMM')}`}</h3>
+          )}
           <Button
             variant="outline"
             onClick={handleCloseForm}
@@ -82,9 +86,6 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
           </Button>
         </Unit>
 
-        {timeslotIsAvailable && (
-          <h3>{`${date.day}-0${format(selectedDate, 'MMMM')}`}</h3>
-        )}
         {time ? (
           <form onSubmit={handleSubmit}>
             <div>

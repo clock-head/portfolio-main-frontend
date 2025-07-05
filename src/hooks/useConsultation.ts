@@ -107,6 +107,11 @@ export const useConsultation = (): UseBookConsultationResult => {
           error instanceof Error ? error.message : 'Unknown booking error.',
         type: 'error',
       });
+
+      AthenaCore.throwError({
+        status: 500,
+        message: error instanceof Error ? error.message : 'Booking error.',
+      });
     } finally {
       setLoading(false);
     }

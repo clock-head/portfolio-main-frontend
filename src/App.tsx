@@ -5,6 +5,7 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { CalendarPage } from './pages/CalendarPage';
 import { ContactPage } from './pages/ContactPage';
 import { VerifyEmailPage } from './pages/VerifyEmailPage';
+import { PaymentPage } from './pages/PaymentPage.js';
 
 import { useNavigate } from 'react-router-dom';
 import { navigateRef } from 'athena-core/ref/navigateRef';
@@ -44,6 +45,7 @@ function App() {
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/verify" element={<VerifyEmailPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
       <Modal ref={modalController}></Modal>
     </>
