@@ -50,6 +50,7 @@ export const PaymentPage = () => {
   }, []);
 
   console.log('checkoutReady', checkoutReady);
+  console.log('checkoutUrl', checkoutUrl);
 
   const proceedToCheckout = async () => {
     window.location.href = checkoutUrl;
