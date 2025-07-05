@@ -25,6 +25,7 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
   // const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const { bookConsultation } = useConsultation();
+  const { isAuthenticated } = useAuth();
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -46,8 +47,6 @@ const ConsultationBookingForm: React.FC<ConsultationBookingFormProps> = ({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const { isAuthenticated } = useAuth();
 
     console.log('isAuthenticated', isAuthenticated);
 
